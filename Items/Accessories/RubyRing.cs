@@ -31,11 +31,10 @@ namespace CrystiliumMod.Items.Accessories
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.IronBar, 4);
-			recipe.AddIngredient(ItemID.Ruby, 3);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.IronBar, 4)
+				.AddIngredient(ItemID.Ruby, 3)
+				.Register();
 		}
 	}
 }

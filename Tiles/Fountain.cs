@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
@@ -49,7 +50,7 @@ namespace CrystiliumMod.Tiles
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Main.PlaySound(2, i * 16, j * 16, 27);
+			SoundEngine.PlaySound(2, i * 16, j * 16, 27);
 		}
 
 		public override void AnimateTile(ref int frame, ref int frameCounter)
@@ -72,11 +73,11 @@ namespace CrystiliumMod.Tiles
 		public override void MouseOver(int i, int j)
 		{
 			//shows the Cryptic Crystal icon while mousing over this tile
-			Main.LocalPlayer.showItemIcon = true;
-			Main.LocalPlayer.showItemIcon2 = ItemType<Items.CrypticCrystal>();
+			Main.LocalPlayer.cursorItemIconEnabled = true;
+			Main.LocalPlayer.cursorItemIconID = ItemType<Items.CrypticCrystal>();
 		}
 
-		public override bool NewRightClick(int i, int j)
+		public override bool RightClick(int i, int j)
 		{
 			//don't bother if there's already a Crystal King in the world
 			if(NPC.AnyNPCs(NPCType<NPCs.Bosses.CrystalKing>()))
@@ -85,7 +86,7 @@ namespace CrystiliumMod.Tiles
 			//check if player has a Cryptic Crystal
 			if (Main.LocalPlayer.ConsumeItem(ItemType<Items.CrypticCrystal>())) {
 				if (Main.netMode == NetmodeID.MultiplayerClient) {
-					ModPacket packet = mod.GetPacket();
+					ModPacket packet = Mod.GetPacket();
 					packet.Write((byte)CrystiliumModMessageType.SpawnBossSpecial);
 					packet.Send();
 				}

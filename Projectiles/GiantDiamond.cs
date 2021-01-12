@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -35,7 +36,7 @@ namespace CrystiliumMod.Projectiles
 			projectile.penetrate--;
 			if (projectile.penetrate <= 0)
 			{
-				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+				SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
 				projectile.Kill();
 			}
 			else
@@ -50,14 +51,14 @@ namespace CrystiliumMod.Projectiles
 					projectile.velocity.Y = -oldVelocity.Y;
 				}
 				projectile.velocity *= 0.75f;
-				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+				SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
 			}
 			return false;
 		}
 
 		public override void Kill(int timeLeft)
 		{
-			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+			SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
 			for (int k = 0; k < 5; k++)
 			{
 				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, DustType<Dusts.Sparkle>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);

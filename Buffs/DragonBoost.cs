@@ -17,11 +17,12 @@ namespace CrystiliumMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			player.thrownDamage *= 4;
-			player.magicDamage *= 4;
-			player.minionDamage *= 4;
-			player.meleeDamage *= 4;
-			player.rangedDamage *= 4;
+			player.allDamage *= 4;
+			//player.thrownDamage *= 4;
+			//player.magicDamage *= 4;
+			//player.minionDamage *= 4;
+			//player.meleeDamage *= 4;
+			//player.rangedDamage *= 4;
 		}
 	}
 }

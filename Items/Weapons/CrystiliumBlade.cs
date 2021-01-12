@@ -18,15 +18,15 @@ namespace CrystiliumMod.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.damage = 138;
-			item.melee = true;
+			item.DamageType = DamageClass.Melee;
 			item.width = 40;
 			item.height = 40;
 			item.useTime = 30;
 			item.useAnimation = 30;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.Swing;
 			item.knockBack = 6;
 			item.value = 80000;
-			item.rare = 8;
+			item.rare = ItemRarityID.Yellow;
 			item.UseSound = SoundID.Item1;
 			item.shoot = ProjectileType<CrystiliumBladeProj>();
 			item.shootSpeed = 6f;
@@ -53,7 +53,7 @@ namespace CrystiliumMod.Items.Weapons
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
-			for (int J = 1; J < 3; J++)
+			for (int j = 1; j < 3; j++)
 			{
 				Vector2 vel = new Vector2(0, -1);
 				float rand = Main.rand.NextFloat() * 6.283f;
@@ -65,11 +65,10 @@ namespace CrystiliumMod.Items.Weapons
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<CrystiliumBar>(), 19);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemType<CrystiliumBar>(), 19)
+				.AddTile(TileID.MythrilAnvil)
+				.Register();
 		}
 	}
 }

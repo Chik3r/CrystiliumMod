@@ -1,3 +1,4 @@
+using CrystiliumMod.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -23,8 +24,8 @@ namespace CrystiliumMod.Tiles
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Crystal Wood Workbench");
 			AddMapEntry(new Color(250, 140, 250), name);
-			dustType = mod.DustType("CrystalDust");
-			disableSmartCursor = true;
+			dustType = DustType<CrystalDust>();
+			TileID.Sets.DisableSmartCursor[Type] = true;
 			adjTiles = new int[] { TileID.WorkBenches };
 		}
 

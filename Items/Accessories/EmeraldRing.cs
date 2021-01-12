@@ -24,20 +24,15 @@ namespace CrystiliumMod.Items.Accessories
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.magicDamage += .05f;
-			player.meleeDamage += .05f;
-			player.rangedDamage += .05f;
-			player.minionDamage += .05f;
-			player.thrownDamage += .05f;
+			player.allDamage += .05f;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.GoldBar, 4);
-			recipe.AddIngredient(ItemID.Emerald, 3);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.GoldBar, 4)
+				.AddIngredient(ItemID.Emerald, 3)
+				.Register();
 		}
 	}
 }

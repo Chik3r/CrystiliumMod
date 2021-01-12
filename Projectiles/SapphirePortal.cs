@@ -1,4 +1,5 @@
 using System;
+using CrystiliumMod.Dusts;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -31,7 +32,7 @@ namespace CrystiliumMod.Projectiles //We need this to basically indicate the fol
 		{
 			for (int i = 0; i < 15; i++)
 			{
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("SapphireDust"), (float)Main.rand.Next(-3, 3), (float)Main.rand.Next(-3, 3), 0);
+				Dust.NewDust(projectile.position, projectile.width, projectile.height, DustType<SapphireDust>(), (float)Main.rand.Next(-3, 3), (float)Main.rand.Next(-3, 3), 0);
 			}
 		}
 
@@ -43,7 +44,7 @@ namespace CrystiliumMod.Projectiles //We need this to basically indicate the fol
 			{
 				for (int i = 0; i < 15; i++)
 				{
-					Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("SapphireDust"), (float)Main.rand.Next(-3, 3), (float)Main.rand.Next(-3, 3), 0);
+					Dust.NewDust(projectile.position, projectile.width, projectile.height, DustType<SapphireDust>(), (float)Main.rand.Next(-3, 3), (float)Main.rand.Next(-3, 3), 0);
 				}
 			}
 			projectile.frameCounter++;

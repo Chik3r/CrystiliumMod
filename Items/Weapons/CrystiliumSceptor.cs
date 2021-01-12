@@ -19,17 +19,17 @@ namespace CrystiliumMod.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.damage = 67;
-			item.magic = true;
+			item.DamageType = DamageClass.Magic;
 			item.mana = 25;
 			item.width = 40;
 			item.height = 40;
 			item.useTime = 12;
 			item.useAnimation = 60;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.Shoot;
 			item.noMelee = true;
 			item.knockBack = 5;
 			item.value = 80000;
-			item.rare = 8;
+			item.rare = ItemRarityID.Yellow;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = ProjectileType<Projectiles.AmberDagger>();

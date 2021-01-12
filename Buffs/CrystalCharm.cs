@@ -18,7 +18,7 @@ namespace CrystiliumMod.Buffs
 		public override void Update(Player player, ref int buffIndex)
 		{
 			//Increase magic damage based on current stacks
-			player.magicDamage *= (float)(1 + (player.GetModPlayer<CrystalPlayer>().crystalCharmStacks * .01));
+			player.GetDamage(DamageClass.Magic) *= (float)(1 + (player.GetModPlayer<CrystalPlayer>().crystalCharmStacks * .01));
 		}
 
 		public override void ModifyBuffTip(ref string tip, ref int rare)

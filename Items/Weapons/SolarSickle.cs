@@ -17,7 +17,7 @@ namespace CrystiliumMod.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.damage = 166;
-			item.melee = true;
+			item.DamageType = DamageClass.Melee;
 			item.width = 40;
 			item.height = 40;
 			item.useTime = 13;
@@ -48,12 +48,11 @@ namespace CrystiliumMod.Items.Weapons
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<CrystiliumBar>(), 15);
-			recipe.AddIngredient(ItemID.FragmentSolar, 15);
-			recipe.AddTile(TileID.LunarCraftingStation);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemType<CrystiliumBar>(), 15)
+				.AddIngredient(ItemID.FragmentSolar, 15)
+				.AddTile(TileID.LunarCraftingStation)
+				.Register();
 		}
 	}
 }

@@ -25,7 +25,22 @@ namespace CrystiliumMod.Projectiles
 					float rand = Main.rand.NextFloat() * 6.283f;
 					vel = vel.RotatedBy(rand);
 					vel *= 5f;
-					Projectile.NewProjectile((projectile.Center.X - 30) + Main.rand.Next(60), (projectile.Center.Y - 30) + Main.rand.Next(60), vel.X, vel.Y, mod.ProjectileType("Shatter" + (1 + Main.rand.Next(0, 3))), projectile.damage - 8, 0, Main.myPlayer);
+
+					int projType = 0;
+					switch (Main.rand.Next(0, 3))
+					{
+						case 0:
+							projType = ProjectileType<Shatter1>();
+							break;
+						case 1:
+							projType = ProjectileType<Shatter2>();
+							break;
+						case 2:
+							projType = ProjectileType<Shatter3>();
+							break;
+					}
+
+					Projectile.NewProjectile((projectile.Center.X - 30) + Main.rand.Next(60), (projectile.Center.Y - 30) + Main.rand.Next(60), vel.X, vel.Y, projType, projectile.damage - 8, 0, Main.myPlayer);
 				}
 			}
 		}

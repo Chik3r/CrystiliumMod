@@ -15,7 +15,7 @@ namespace CrystiliumMod.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.damage = 25;
-			item.melee = true;
+			item.DamageType = DamageClass.Melee;
 			item.width = 38;
 			item.height = 38;
 			item.scale = 1.1f;
@@ -27,9 +27,9 @@ namespace CrystiliumMod.Items.Weapons
 			item.noMelee = true;
 			item.noUseGraphic = true;
 			item.useTurn = true;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.Shoot;
 			item.value = 100000;
-			item.rare = 7;
+			item.rare = ItemRarityID.Lime;
 			item.shoot = ProjectileType<Projectiles.QuartzSpearProj>();  //put your Spear projectile name
 			item.shootSpeed = 5f;
 		}

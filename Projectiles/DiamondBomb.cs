@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -39,7 +40,7 @@ namespace CrystiliumMod.Projectiles
 			projectile.penetrate--;
 			if (projectile.penetrate <= 0)
 			{
-				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+				SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
 				projectile.Kill();
 			}
 			else
@@ -54,7 +55,7 @@ namespace CrystiliumMod.Projectiles
 					projectile.velocity.Y = -oldVelocity.Y;
 				}
 				projectile.velocity *= 0.75f;
-				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+				SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
 			}
 			return false;
 		}
@@ -65,7 +66,7 @@ namespace CrystiliumMod.Projectiles
 			{
 				Dust.NewDust(projectile.position, projectile.width, projectile.height, 206, projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
 			}
-			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+			SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
 			Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, ProjectileType<DiamondExplosion>(), projectile.damage, 0, Main.myPlayer);
 		}
 

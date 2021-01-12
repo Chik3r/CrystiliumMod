@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
 using System;
+using CrystiliumMod.Dusts;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -49,12 +51,9 @@ namespace CrystiliumMod.NPCs
 			}
 		}
 
-		public override void NPCLoot()
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			if (Main.rand.Next(2) == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemType<Items.EnchantedGeode>());
-			}
+			npcLoot.Add(new CommonDrop(ItemType<Items.EnchantedGeode>(), 2));
 		}
 
 		public override void AI()
@@ -75,7 +74,7 @@ namespace CrystiliumMod.NPCs
 
 			if (Main.rand.Next(5) == 0)
 			{
-				Dust.NewDust(npc.position + npc.velocity, npc.width - (Main.rand.Next(npc.width)), 1, mod.DustType("CrystalDust"), (float)Main.rand.Next(-5, 5), (float)Main.rand.Next(-5, 5), 0);
+				Dust.NewDust(npc.position + npc.velocity, npc.width - (Main.rand.Next(npc.width)), 1, DustType<CrystalDust>(), (float)Main.rand.Next(-5, 5), (float)Main.rand.Next(-5, 5), 0);
 			}
 			npc.TargetClosest();
 			float Xdis = Main.player[npc.target].Center.X - npc.Center.X;  // change myplayer to nearest player in full version
@@ -120,7 +119,7 @@ namespace CrystiliumMod.NPCs
 			{
 				for (int i = 0; i < 20; i++)
 				{
-					Dust.NewDust(npc.position, npc.width - (Main.rand.Next(npc.width)), npc.height - (Main.rand.Next(npc.height)), mod.DustType("CrystalDust"), (float)Main.rand.Next(-5, 5), (float)Main.rand.Next(-5, 5), 0);
+					Dust.NewDust(npc.position, npc.width - (Main.rand.Next(npc.width)), npc.height - (Main.rand.Next(npc.height)), DustType<CrystalDust>(), (float)Main.rand.Next(-5, 5), (float)Main.rand.Next(-5, 5), 0);
 				}
 				do
 				{  //Keep teleporting if too close to player

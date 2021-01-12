@@ -16,7 +16,7 @@ namespace CrystiliumMod.Items
 		public override void SetDefaults()
 		{
 			item.damage = 25;
-			item.melee = true;
+			item.DamageType = DamageClass.Melee;
 			item.width = 40;
 			item.height = 40;
 			item.useTime = 15;
@@ -33,11 +33,10 @@ namespace CrystiliumMod.Items
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<EnchantedGeode>(), 10);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemType<EnchantedGeode>(), 10)
+				.AddTile(TileID.MythrilAnvil)
+				.Register();
 		}
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)

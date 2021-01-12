@@ -32,20 +32,21 @@ namespace CrystiliumMod.NPCs.Bosses
 			npc.knockBackResist = 0f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
-		{
-			//Putting gores in HitEffect prevents gores when scripting NPC death (setting life to 0)
-			if (npc.life <= 0)
-			{
-				//spawn initial set
-				for (int i = 1; i <= 3; i++)
-				{
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Cultist_Gore_" + i));
-				}
-				//spawn the remaining arm
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Cultist_Gore_1"));
-			}
-		}
+		// TODO: GetGoreSlot
+		//public override void HitEffect(int hitDirection, double damage)
+		//{
+		//	//Putting gores in HitEffect prevents gores when scripting NPC death (setting life to 0)
+		//	if (npc.life <= 0)
+		//	{
+		//		//spawn initial set
+		//		for (int i = 1; i <= 3; i++)
+		//		{
+		//			Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Cultist_Gore_" + i));
+		//		}
+		//		//spawn the remaining arm
+		//		Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Cultist_Gore_1"));
+		//	}
+		//}
 
 		public override void AI()
 		{

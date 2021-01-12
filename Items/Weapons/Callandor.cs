@@ -28,7 +28,7 @@ namespace CrystiliumMod.Items.Weapons
 			item.knockBack = 4f;
 			item.autoReuse = false;
 			item.noMelee = true;
-			item.melee = true;
+			item.DamageType = DamageClass.Melee;
 			item.shoot = ProjectileType<CallandorSlice>();
 			item.shootSpeed = 15f;
 			item.value = 100000;

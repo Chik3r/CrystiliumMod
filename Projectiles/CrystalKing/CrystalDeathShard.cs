@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -24,7 +25,7 @@ namespace CrystiliumMod.Projectiles.CrystalKing
 			projectile.penetrate--;
 			if (projectile.penetrate <= 0)
 			{
-				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+				SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
 				projectile.Kill();
 			}
 			else
@@ -39,7 +40,7 @@ namespace CrystiliumMod.Projectiles.CrystalKing
 					projectile.velocity.Y = -oldVelocity.Y;
 				}
 				projectile.velocity *= 0.75f;
-				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+				SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
 			}
 			return false;
 		}

@@ -19,7 +19,7 @@ namespace CrystiliumMod.Projectiles
 			projectile.height = 32;
 			projectile.aiStyle = 1;
 			projectile.friendly = true;
-			projectile.magic = true;
+			projectile.DamageType = DamageClass.Magic;
 			projectile.penetrate = 1;
 			projectile.ignoreWater = true;
 			projectile.timeLeft = 25;

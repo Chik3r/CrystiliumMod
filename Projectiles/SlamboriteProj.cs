@@ -22,7 +22,7 @@ namespace CrystiliumMod.Projectiles
 			projectile.height = 28;
 			projectile.friendly = true;
 			projectile.penetrate = -1; // Penetrates NPCs infinitely.
-			projectile.melee = true; // Deals melee dmg.
+			projectile.DamageType = DamageClass.Melee; // Deals melee dmg.
 
 			projectile.aiStyle = 15; // Set the aiStyle to that of a flail.
 		}
@@ -33,11 +33,11 @@ namespace CrystiliumMod.Projectiles
 		{
 			// So set the correct path here to load the chain texture. 'YourModName' is of course the name of your mod.
 			// Then into the Projectiles folder and take the texture that is called 'CustomFlailBall_Chain'.
-			Texture2D texture = ModContent.GetTexture("CrystiliumMod/Projectiles/SlamboriteChain");
+			Texture2D texture = GetTexture("CrystiliumMod/Projectiles/SlamboriteChain").Value;
 
 			Vector2 position = projectile.Center;
 			Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;
-			Rectangle? sourceRectangle = new Microsoft.Xna.Framework.Rectangle?();
+			Rectangle? sourceRectangle = new Rectangle?();
 			Vector2 origin = new Vector2((float)texture.Width * 0.5f, (float)texture.Height * 0.5f);
 			float num1 = (float)texture.Height;
 			Vector2 vector2_4 = mountedCenter - position;

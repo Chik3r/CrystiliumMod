@@ -18,8 +18,8 @@ namespace CrystiliumMod.Projectiles
 			projectile.height = 30;
 			projectile.aiStyle = 3;
 			projectile.friendly = true;
-			projectile.ranged = true;
-			projectile.magic = false;
+			projectile.DamageType = DamageClass.Ranged;
+			//projectile.magic = false;
 			projectile.penetrate = 10;
 			projectile.timeLeft = 600;
 			projectile.light = 0.5f;
@@ -34,7 +34,22 @@ namespace CrystiliumMod.Projectiles
 				float rand = Main.rand.NextFloat() * 6.283f;
 				vel = vel.RotatedBy(rand);
 				vel *= 5f;
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 20, vel.X, vel.Y, mod.ProjectileType("Shatter" + (1 + Main.rand.Next(0, 3))), projectile.damage / 3, 0, Main.myPlayer);
+
+				int projType = 0;
+				switch (Main.rand.Next(0, 3))
+				{
+					case 0:
+						projType = ProjectileType<Shatter1>();
+						break;
+					case 1:
+						projType = ProjectileType<Shatter2>();
+						break;
+					case 2:
+						projType = ProjectileType<Shatter3>();
+						break;
+				}
+
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 20, vel.X, vel.Y, projType, projectile.damage / 3, 0, Main.myPlayer);
 			}
 		}
 	}

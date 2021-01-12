@@ -13,10 +13,10 @@ namespace CrystiliumMod.Backgrounds
 
 		public override void FillTextureArray(int[] textureSlots)
 		{
-			textureSlots[0] = mod.GetBackgroundSlot("Backgrounds/CrystalBiomeUG0");
-			textureSlots[1] = mod.GetBackgroundSlot("Backgrounds/CrystalBiomeUG1");
-			textureSlots[2] = mod.GetBackgroundSlot("Backgrounds/CrystalBiomeUG2");
-			textureSlots[3] = mod.GetBackgroundSlot("Backgrounds/CrystalBiomeUG3");
+			textureSlots[0] = Mod.GetBackgroundSlot("Backgrounds/CrystalBiomeUG0.rawimg");
+			textureSlots[1] = Mod.GetBackgroundSlot("Backgrounds/CrystalBiomeUG1.rawimg");
+			textureSlots[2] = Mod.GetBackgroundSlot("Backgrounds/CrystalBiomeUG2.rawimg");
+			textureSlots[3] = Mod.GetBackgroundSlot("Backgrounds/CrystalBiomeUG3.rawimg");
 		}
 	}
 }

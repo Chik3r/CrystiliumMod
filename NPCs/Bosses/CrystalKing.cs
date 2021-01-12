@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using CrystiliumMod.Items.Weapons;
 using CrystiliumMod.Projectiles.CrystalKing;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.GameContent;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -37,24 +40,26 @@ namespace CrystiliumMod.NPCs.Bosses
 			npc.value = 60000f;
 			bossBag = ItemType<Items.CrystalBag>();
 			npc.knockBackResist = 0f;
-			music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/CrystalKing");
+			// TODO: GetSoundSlot stuff
+			//music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/CrystalKing");
 			npc.lavaImmune = true;
 			npc.noTileCollide = true;
 			npc.noGravity = true;
 			npc.boss = true;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
-		{
-			if (npc.life <= 0)
-			{
-				//spawn all gores once
-				for (int i = 1; i <= 10; i++)
-				{
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/KingGore" + i));
-				}
-			}
-		}
+		// TODO: GetGoreSlot
+		//public override void HitEffect(int hitDirection, double damage)
+		//{
+		//	if (npc.life <= 0)
+		//	{
+		//		//spawn all gores once
+		//		for (int i = 1; i <= 10; i++)
+		//		{
+		//			Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/KingGore" + i));
+		//		}
+		//	}
+		//}
 
 		public override void AI()
 		{
@@ -207,12 +212,12 @@ namespace CrystiliumMod.NPCs.Bosses
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
-			Texture2D drawTexture = Main.npcTexture[npc.type];
+			Texture2D drawTexture = TextureAssets.Npc[npc.type].Value;
 			Vector2 origin = new Vector2((drawTexture.Width / 2) * 0.5F, (drawTexture.Height / Main.npcFrameCount[npc.type]) * 0.5F);
 
 			Vector2 drawPos = new Vector2(
-				npc.position.X - Main.screenPosition.X + (npc.width / 2) - (Main.npcTexture[npc.type].Width / 2) * npc.scale / 2f + origin.X * npc.scale,
-				npc.position.Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + origin.Y * npc.scale + npc.gfxOffY);
+				npc.position.X - Main.screenPosition.X + (npc.width / 2) - (drawTexture.Width / 2) * npc.scale / 2f + origin.X * npc.scale,
+				npc.position.Y - Main.screenPosition.Y + npc.height - drawTexture.Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + origin.Y * npc.scale + npc.gfxOffY);
 
 			SpriteEffects effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 			spriteBatch.Draw(drawTexture, drawPos, npc.frame, Color.White, npc.rotation, origin, npc.scale, effects, 0);
@@ -220,42 +225,93 @@ namespace CrystiliumMod.NPCs.Bosses
 			return false; // We return false, since we don't want vanilla drawing to execute.
 		}
 
-		public override void NPCLoot()
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			if (Main.rand.Next(10) == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemType<Items.Placeable.KingTrophy>());
-			}
-			if (Main.expertMode)
-			{
-				npc.DropBossBags();
-			}
-			else
-			{
-				if (Main.rand.Next(10) == 0)
-				{
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemType<Items.Armor.CrystalMask>());
-				}
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemType<Items.CrystiliumBar>(), Main.rand.Next(13, 20));
+			npcLoot.Add(new CommonDrop(ItemType<Items.Placeable.KingTrophy>(), 10));
 
-				var ChoiceChooser = new WeightedRandom<int>();
-				ChoiceChooser.Add(ItemType<Cryst>());
-				ChoiceChooser.Add(ItemType<Callandor>());
-				ChoiceChooser.Add(ItemType<QuartzSpear>());
-				ChoiceChooser.Add(ItemType<ShiningTrigger>());
-				ChoiceChooser.Add(ItemType<Slamborite>());
-				ChoiceChooser.Add(ItemType<Shimmer>());
-				ChoiceChooser.Add(ItemType<Shatterocket>());
-				ChoiceChooser.Add(ItemType<RoyalShredder>());
-				int Choice = ChoiceChooser;
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, Choice);
-			}
+			npcLoot.Add(new DropBasedOnExpertMode(new CommonDrop(ItemType<Items.Armor.CrystalMask>(), 10), new DropNothing()));
+			npcLoot.Add(new DropBasedOnExpertMode(new CommonDrop(ItemType<Items.CrystiliumBar>(), 1, 13, 20), new DropNothing()));
+			var normalModeRule = new OneFromOptionsDropRule(8, 1, new[]
+			{
+				ItemType<Cryst>(),
+				ItemType<Callandor>(),
+				ItemType<QuartzSpear>(),
+				ItemType<ShiningTrigger>(),
+				ItemType<Slamborite>(),
+				ItemType<Shimmer>(),
+				ItemType<Shatterocket>(),
+				ItemType<RoyalShredder>()
+			});
+
+			npcLoot.Add(new DropBasedOnExpertMode(normalModeRule, ItemDropRule.BossBag(ItemType<Items.CrystalBag>())));
+			npcLoot.Add(new DefeatCrystalKing());
+		}
+
+		//public override void NPCLoot()
+		//{
+		//	if (Main.rand.Next(10) == 0)
+		//	{
+		//		Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemType<Items.Placeable.KingTrophy>());
+		//	}
+		//	if (Main.expertMode)
+		//	{
+		//		npc.DropBossBags();
+		//	}
+		//	else
+		//	{
+		//		if (Main.rand.Next(10) == 0)
+		//		{
+		//			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemType<Items.Armor.CrystalMask>());
+		//		}
+		//		Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemType<Items.CrystiliumBar>(), Main.rand.Next(13, 20));
+
+		//		var ChoiceChooser = new WeightedRandom<int>();
+		//		ChoiceChooser.Add(ItemType<Cryst>());
+		//		ChoiceChooser.Add(ItemType<Callandor>());
+		//		ChoiceChooser.Add(ItemType<QuartzSpear>());
+		//		ChoiceChooser.Add(ItemType<ShiningTrigger>());
+		//		ChoiceChooser.Add(ItemType<Slamborite>());
+		//		ChoiceChooser.Add(ItemType<Shimmer>());
+		//		ChoiceChooser.Add(ItemType<Shatterocket>());
+		//		ChoiceChooser.Add(ItemType<RoyalShredder>());
+		//		int Choice = ChoiceChooser;
+		//		Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, Choice);
+		//	}
+		//	if (!CrystalWorld.downedCrystalKing)
+		//	{
+		//		CrystalWorld.downedCrystalKing = true;
+		//		if(Main.netMode == NetmodeID.Server)
+		//			NetMessage.SendData(MessageID.WorldData);
+		//	}
+		//}
+	}
+
+	internal class DefeatCrystalKing : IItemDropRule
+	{
+		public bool CanDrop(DropAttemptInfo info)
+		{
+			return false;
+		}
+
+		public void ReportDroprates(List<DropRateInfo> drops, DropRateInfoChainFeed ratesInfo)
+		{
+			Chains.ReportDroprates(ChainedRules, 1f, drops, ratesInfo);
+		}
+
+		public ItemDropAttemptResult TryDroppingItem(DropAttemptInfo info)
+		{
 			if (!CrystalWorld.downedCrystalKing)
 			{
 				CrystalWorld.downedCrystalKing = true;
-				if(Main.netMode == NetmodeID.Server)
+				if (Main.netMode == NetmodeID.Server)
 					NetMessage.SendData(MessageID.WorldData);
 			}
+
+			var result = new ItemDropAttemptResult();
+			result.State = ItemDropAttemptResultState.DoesntFillConditions;
+			return result;
 		}
+
+		public List<IItemDropRuleChainAttempt> ChainedRules { get; } = new List<IItemDropRuleChainAttempt>();
 	}
 }

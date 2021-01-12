@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -15,8 +16,9 @@ namespace CrystiliumMod.Projectiles.Minions
 		public override void SetDefaults()
 		{
 			projectile.CloneDefaults(ProjectileID.WoodenArrowFriendly);
-			projectile.ranged = false;
-			projectile.minion = true;
+			//projectile.ranged = false;
+			projectile.DamageType = DamageClass.Summon;
+			projectile.damage = 105;
 			projectile.width = 10;
 			projectile.penetrate = 5;
 			projectile.height = 20;
@@ -24,7 +26,7 @@ namespace CrystiliumMod.Projectiles.Minions
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
-			Main.PlaySound(0, projectile.Center);
+			SoundEngine.PlaySound(0, projectile.Center);
 			return base.OnTileCollide(oldVelocity);
 		}
 	}

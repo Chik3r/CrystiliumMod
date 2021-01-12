@@ -1,3 +1,4 @@
+using CrystiliumMod.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -19,16 +20,16 @@ namespace CrystiliumMod.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.damage = 54;
-			item.ranged = true;
+			item.DamageType = DamageClass.Ranged;
 			item.width = 40;
 			item.height = 20;
 			item.useTime = 6;
 			item.useAnimation = 6;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.Shoot;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 4;
 			item.value = 100000;
-			item.rare = 7;
+			item.rare = ItemRarityID.Lime;
 			item.UseSound = SoundID.Item11;
 			item.autoReuse = true;
 			item.shoot = ProjectileType<Projectiles.Shatter1>(); //idk why but all the guns in the vanilla source have this
@@ -46,7 +47,22 @@ namespace CrystiliumMod.Items.Weapons
 			{
 				newVect = origVect.RotatedBy(-System.Math.PI / (Main.rand.Next(900, 1800) / 10));
 			}
-			Projectile.NewProjectile(position.X, position.Y, newVect.X, newVect.Y, mod.ProjectileType("Shatter" + (1 + Main.rand.Next(0, 3))), damage - 5, knockBack, player.whoAmI, 0f, 0f);
+
+			int projType = 0;
+			switch (Main.rand.Next(0, 3))
+			{
+				case 0:
+					projType = ProjectileType<Shatter1>();
+					break;
+				case 1:
+					projType = ProjectileType<Shatter2>();
+					break;
+				case 2:
+					projType = ProjectileType<Shatter3>();
+					break;
+			}
+
+			Projectile.NewProjectile(position.X, position.Y, newVect.X, newVect.Y, projType, damage - 5, knockBack, player.whoAmI, 0f, 0f);
 			return false;
 		}
 	}

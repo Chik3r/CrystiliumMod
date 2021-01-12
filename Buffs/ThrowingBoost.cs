@@ -17,7 +17,7 @@ namespace CrystiliumMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			player.thrownDamage *= 1.1f;
+			player.GetDamage(DamageClass.Throwing) *= 1.1f;
 		}
 	}
 }

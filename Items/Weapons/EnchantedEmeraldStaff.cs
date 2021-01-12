@@ -19,17 +19,17 @@ namespace CrystiliumMod.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.damage = 27;
-			item.magic = true;
+			item.DamageType = DamageClass.Magic;
 			item.mana = 11;
 			item.width = 50;
 			item.height = 50;
 			item.useTime = 20;
 			item.useAnimation = 20;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.Shoot;
 			item.noMelee = true;
 			item.knockBack = 5;
 			item.value = 30000;
-			item.rare = 3;
+			item.rare = ItemRarityID.Orange;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = ProjectileType<Projectiles.Leaf>();
@@ -50,13 +50,12 @@ namespace CrystiliumMod.Items.Weapons
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.EmeraldStaff);
-			recipe.AddIngredient(ItemID.Emerald, 15);
-			recipe.AddIngredient(ItemType<ShinyGemstone>(), 10);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.EmeraldStaff)
+				.AddIngredient(ItemID.Emerald, 15)
+				.AddIngredient(ItemType<ShinyGemstone>(), 10)
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }

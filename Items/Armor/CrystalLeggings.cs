@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using Terraria.ID;
 
 namespace CrystiliumMod.Items.Armor
 {
@@ -20,24 +21,23 @@ namespace CrystiliumMod.Items.Armor
 			item.width = 18;
 			item.height = 18;
 			item.value = 10000;
-			item.rare = 3;
+			item.rare = ItemRarityID.Orange;
 			item.defense = 3;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-			player.magicCrit += 7;
+			player.GetCrit(DamageClass.Magic) += 7;
 			player.maxMinions += 1;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<Items.RadiantPrism>(), 10);
-			recipe.AddIngredient(ItemType<Items.ShinyGemstone>(), 10);
-			recipe.AddTile(Terraria.ID.TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemType<RadiantPrism>(), 10)
+				.AddIngredient(ItemType<ShinyGemstone>(), 10)
+				.AddTile(Terraria.ID.TileID.Anvils)
+				.Register();
 		}
 	}
 }

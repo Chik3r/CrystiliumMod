@@ -6,6 +6,8 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
+using CrystiliumMod.Projectiles;
+using Terraria.Audio;
 
 namespace CrystiliumMod
 {
@@ -38,14 +40,29 @@ namespace CrystiliumMod
 		{
 			if (CrystalAcc)
 			{
-				Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 27);
+				SoundEngine.PlaySound(2, player.position, 27);
 				for (int h = 0; h < 20; h++)
 				{
 					Vector2 vel = new Vector2(0, -1);
 					float rand = Main.rand.NextFloat() * 6.283f;
 					vel = vel.RotatedBy(rand);
 					vel *= 5f;
-					Projectile.NewProjectile(player.Center.X, player.Center.Y, vel.X, vel.Y, mod.ProjectileType("Shatter" + (1 + Main.rand.Next(0, 3))), 20, 0, player.whoAmI);
+
+					int projType = 0;
+					switch (Main.rand.Next(0, 3))
+					{
+						case 0:
+							projType = ProjectileType<Shatter1>();
+							break;
+						case 1:
+							projType = ProjectileType<Shatter2>();
+							break;
+						case 2:
+							projType = ProjectileType<Shatter3>();
+							break;
+					}
+
+					Projectile.NewProjectile(player.Center.X, player.Center.Y, vel.X, vel.Y, projType, 20, 0, player.whoAmI);
 				}
 			}
 		}

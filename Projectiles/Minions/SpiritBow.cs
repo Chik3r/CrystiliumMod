@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -27,7 +28,8 @@ namespace CrystiliumMod.Projectiles.Minions
 			projectile.penetrate = -1;
 			projectile.tileCollide = false;
 			projectile.ignoreWater = true;
-			projectile.minion = true;
+			projectile.DamageType = DamageClass.Summon;
+			projectile.damage = 105;
 			projectile.sentry = true;
 			projectile.timeLeft = Projectile.SentryLifeTime;
 		}
@@ -38,11 +40,11 @@ namespace CrystiliumMod.Projectiles.Minions
 			//also draws the animation PROPERLY, because vanilla is too dumb to do it right
 			if (projectile.rotation > Math.PI / 2 && projectile.rotation < Math.PI * 3 / 2)
 			{
-				spriteBatch.Draw(mod.GetTexture("Projectiles/Minions/SpiritBow"), projectile.Center - Main.screenPosition, new Rectangle(0, (projectile.height + 1) * projectile.frame, projectile.width, projectile.height), lightColor, projectile.rotation, new Vector2(projectile.width / 2, projectile.height / 2), projectile.scale, SpriteEffects.FlipVertically, 0f);
+				spriteBatch.Draw(Mod.GetTexture("Projectiles/Minions/SpiritBow").Value, projectile.Center - Main.screenPosition, new Rectangle(0, (projectile.height + 1) * projectile.frame, projectile.width, projectile.height), lightColor, projectile.rotation, new Vector2(projectile.width / 2, projectile.height / 2), projectile.scale, SpriteEffects.FlipVertically, 0f);
 			}
 			else
 			{
-				spriteBatch.Draw(mod.GetTexture("Projectiles/Minions/SpiritBow"), projectile.Center - Main.screenPosition, new Rectangle(0, (projectile.height + 1) * projectile.frame, projectile.width, projectile.height), lightColor, projectile.rotation, new Vector2(projectile.width / 2, projectile.height / 2), projectile.scale, SpriteEffects.None, 0f);
+				spriteBatch.Draw(Mod.GetTexture("Projectiles/Minions/SpiritBow").Value, projectile.Center - Main.screenPosition, new Rectangle(0, (projectile.height + 1) * projectile.frame, projectile.width, projectile.height), lightColor, projectile.rotation, new Vector2(projectile.width / 2, projectile.height / 2), projectile.scale, SpriteEffects.None, 0f);
 			}
 			return false;
 		}
@@ -115,7 +117,7 @@ namespace CrystiliumMod.Projectiles.Minions
 					Projectile newProj = Main.projectile[proj];
 					newProj.position += projectile.Center - newProj.Center;
 
-					Main.PlaySound(2, projectile.Center, 5);  //make bow shooty sound
+					SoundEngine.PlaySound(2, projectile.Center, 5);  //make bow shooty sound
 
 					projectile.frame++;
 				}
@@ -145,7 +147,7 @@ namespace CrystiliumMod.Projectiles.Minions
 
 		public override void Kill(int timeLeft)
 		{
-			Main.PlaySound(2, projectile.Center, 27);
+			SoundEngine.PlaySound(2, projectile.Center, 27);
 			for (int i = 0; i < 15; i++)
 			{
 				Dust.NewDust(projectile.position, projectile.width, projectile.height, DustType<Dusts.Sparkle>(), (float)Main.rand.Next(-3, 3), (float)Main.rand.Next(-3, 3), 0);

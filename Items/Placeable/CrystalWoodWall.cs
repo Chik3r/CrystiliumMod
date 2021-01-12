@@ -27,10 +27,9 @@ namespace CrystiliumMod.Items.Placeable
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<CrystalWood>());
-			recipe.SetResult(this, 4);
-			recipe.AddRecipe();
+			CreateRecipe(4)
+				.AddIngredient(ItemType<CrystalWood>())
+				.Register();
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using CrystiliumMod.Dusts;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -17,7 +18,7 @@ namespace CrystiliumMod.Projectiles
 		public override void SetDefaults()
 		{
 			projectile.friendly = true;
-			projectile.magic = true;
+			projectile.DamageType = DamageClass.Magic;
 			projectile.width = 14;
 			projectile.height = 26;
 			projectile.timeLeft = 240; //Projectile lasts 4 seconds
@@ -67,7 +68,7 @@ namespace CrystiliumMod.Projectiles
 			//Spawn the dust
 			if (Main.rand.Next(3) == 0)
 			{
-				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType("TrueRubyDust"), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, DustType<TrueRubyDust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
 			}
 			projectile.rotation = projectile.velocity.ToRotation() + (float)(Math.PI / 2);
 		}

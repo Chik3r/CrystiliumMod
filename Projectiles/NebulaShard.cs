@@ -1,4 +1,5 @@
 using System;
+using CrystiliumMod.Dusts;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -12,7 +13,7 @@ namespace CrystiliumMod.Projectiles
 			projectile.width = 14;
 			projectile.height = 36;
 			projectile.friendly = true;
-			projectile.magic = true;
+			projectile.DamageType = DamageClass.Magic;
 			projectile.light = 0.75f;
 			projectile.penetrate = 25;
 		}
@@ -21,7 +22,7 @@ namespace CrystiliumMod.Projectiles
 		{
 			for (int i = 0; i < 15; i++)
 			{
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("NebulaDust"), (float)Main.rand.Next(-3, 3), (float)Main.rand.Next(-3, 3), 0);
+				Dust.NewDust(projectile.position, projectile.width, projectile.height, DustType<NebulaDust>(), (float)Main.rand.Next(-3, 3), (float)Main.rand.Next(-3, 3), 0);
 			}
 		}
 

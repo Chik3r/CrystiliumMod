@@ -18,17 +18,17 @@ namespace CrystiliumMod.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.damage = 18;
-			item.magic = true;
+			item.DamageType = DamageClass.Magic;
 			item.mana = 11;
 			item.width = 40;
 			item.height = 40;
 			item.useTime = 35;
 			item.useAnimation = 35;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.Shoot;
 			item.noMelee = true;
 			item.knockBack = 5;
 			item.value = 30000;
-			item.rare = 3;
+			item.rare = ItemRarityID.Orange;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = ProjectileType<Projectiles.TrueAmethystProjectile>();
@@ -45,13 +45,12 @@ namespace CrystiliumMod.Items.Weapons
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.AmethystStaff);
-			recipe.AddIngredient(ItemID.Amethyst, 15);
-			recipe.AddIngredient(ItemType<Items.ShinyGemstone>(), 10);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.AmethystStaff)
+				.AddIngredient(ItemID.Amethyst, 15)
+				.AddIngredient(ItemType<Items.ShinyGemstone>(), 10)
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }

@@ -1,5 +1,7 @@
+using CrystiliumMod.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -23,7 +25,7 @@ namespace CrystiliumMod.Projectiles
 			projectile.penetrate = -1;
 			projectile.tileCollide = false;
 			projectile.ignoreWater = true;
-			projectile.minion = true;
+			projectile.DamageType = DamageClass.Summon;
 			projectile.light = 0.75f;
 			projectile.minionSlots = 0;
 		}
@@ -36,7 +38,7 @@ namespace CrystiliumMod.Projectiles
 			{
 				for (int i = 0; i < 15; i++)
 				{
-					Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("StardustDust"), (float)Main.rand.Next(-3, 3), (float)Main.rand.Next(-3, 3), 0);
+					Dust.NewDust(projectile.position, projectile.width, projectile.height, DustType<StardustDust>(), (float)Main.rand.Next(-3, 3), (float)Main.rand.Next(-3, 3), 0);
 				}
 			}
 			projectile.frameCounter++;
@@ -82,7 +84,7 @@ namespace CrystiliumMod.Projectiles
 				Projectile newProj = Main.projectile[proj];
 				newProj.position += projectile.Center - newProj.Center;
 
-				Main.PlaySound(2, projectile.Center, 5);  //make bow shooty sound
+				SoundEngine.PlaySound(2, projectile.Center, 5);  //make bow shooty sound
 			}
 		}
 
@@ -90,7 +92,7 @@ namespace CrystiliumMod.Projectiles
 		{
 			if (timeLeft <= 1)
 			{
-				Main.PlaySound(2, projectile.Center, 27);
+				SoundEngine.PlaySound(2, projectile.Center, 27);
 			}
 		}
 	}

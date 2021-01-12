@@ -1,5 +1,7 @@
+using CrystiliumMod.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -43,10 +45,10 @@ namespace CrystiliumMod.Projectiles
 
 		public override void Kill(int timeLeft)
 		{
-			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+			SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
 			for (int k = 0; k < 10; k++)
 			{
-				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType("TrueRubyDust"), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, DustType<TrueRubyDust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
 			}
 		}
 	}

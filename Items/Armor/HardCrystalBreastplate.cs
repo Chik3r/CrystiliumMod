@@ -21,25 +21,24 @@ namespace CrystiliumMod.Items.Armor
 			item.width = 18;
 			item.height = 18;
 			item.value = 50000;
-			item.rare = 5;
+			item.rare = ItemRarityID.Pink;
 			item.defense = 8;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-			player.magicDamage *= 1.08f;
-			player.minionDamage *= 1.08f;
+			player.GetDamage(DamageClass.Magic) *= 1.08f;
+			player.GetDamage(DamageClass.Summon) *= 1.08f;
 			player.maxMinions += 1;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.CrystalShard, 20);
-			recipe.AddIngredient(ItemType<Items.EnchantedGeode>(), 15);
-			recipe.AddTile(Terraria.ID.TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.CrystalShard, 20)
+				.AddIngredient(ItemType<Items.EnchantedGeode>(), 15)
+				.AddTile(Terraria.ID.TileID.Anvils)
+				.Register();
 		}
 	}
 }

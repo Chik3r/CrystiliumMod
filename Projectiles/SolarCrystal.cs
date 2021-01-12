@@ -1,3 +1,4 @@
+using CrystiliumMod.Dusts;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -31,7 +32,7 @@ namespace CrystiliumMod.Projectiles //We need this to basically indicate the fol
 			projectile.velocity *= 0.98f;
 			if (Main.rand.Next(5) == 0)
 			{
-				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType("TrueRubyDust"), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, DustType<TrueRubyDust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
 			}
 		}
 

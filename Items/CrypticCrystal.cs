@@ -27,13 +27,12 @@ namespace CrystiliumMod.Items
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Ectoplasm, 10);
-			recipe.AddIngredient(ItemID.CrystalShard, 10);
-			recipe.AddIngredient(ItemType<EnchantedGeode>(), 5);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.Ectoplasm, 10)
+				.AddIngredient(ItemID.CrystalShard, 10)
+				.AddIngredient(ItemType<EnchantedGeode>(), 5)
+				.AddTile(TileID.MythrilAnvil)
+				.Register();
 		}
 	}
 }

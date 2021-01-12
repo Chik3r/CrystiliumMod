@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -33,7 +34,7 @@ namespace CrystiliumMod.Tiles
 
 		public override bool KillSound(int i, int j)
 		{
-			Main.PlaySound(2, i * 16, j * 16, 27);
+			SoundEngine.PlaySound(2, i * 16, j * 16, 27);
 			return false;
 		}
 	}

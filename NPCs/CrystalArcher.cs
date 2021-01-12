@@ -2,6 +2,8 @@ using CrystiliumMod.Projectiles;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -35,40 +37,33 @@ namespace CrystiliumMod.NPCs
 			return Main.tile[(int)(spawnInfo.spawnTileX), (int)(spawnInfo.spawnTileY)].type == TileType<Tiles.CrystalBlock>() ? 10f : 0f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
-		{
-			if (npc.life <= 0)
-			{
-				//spawn initial set
-				for (int i = 1; i <= 3; i++)
-				{
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Archer_Gore_" + i));
-				}
-				//spawn a couple extra bits
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Archer_Gore_4"));
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Archer_Gore_4"));
-			}
-		}
+		// TODO: GetGoreSlot
+		//public override void HitEffect(int hitDirection, double damage)
+		//{
+		//	if (npc.life <= 0)
+		//	{
+		//		//spawn initial set
+		//		for (int i = 1; i <= 3; i++)
+		//		{
+		//			Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Archer_Gore_" + i));
+		//		}
+		//		//spawn a couple extra bits
+		//		Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Archer_Gore_4"));
+		//		Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Archer_Gore_4"));
+		//	}
+		//}
 
-		public override void NPCLoot()
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			if (Main.rand.Next(2) == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemType<Items.ShinyGemstone>());
-			}
+			npcLoot.Add(new CommonDrop(ItemType<Items.ShinyGemstone>(), 2));
 		}
 
 		public override void AI()
 		{
-			bool noXVelocity = false;
-			if (npc.velocity.X == 0f) noXVelocity = true;
+			bool noXVelocity = npc.velocity.X == 0f;
 			if (npc.justHit) noXVelocity = false;
 			int num68 = 60;
-			bool walking = false;
-			if (npc.velocity.Y == 0f && ((npc.velocity.X > 0f && npc.direction < 0) || (npc.velocity.X < 0f && npc.direction > 0)))
-			{
-				walking = true;
-			}
+			bool walking = npc.velocity.Y == 0f && ((npc.velocity.X > 0f && npc.direction < 0) || (npc.velocity.X < 0f && npc.direction > 0));
 			if ((npc.position.X == npc.oldPosition.X || npc.ai[3] >= (float)num68) | walking)
 			{
 				npc.ai[3] += 1f;
@@ -91,7 +86,7 @@ namespace CrystiliumMod.NPCs
 			}
 			if (Main.rand.Next(1000) == 0)
 			{
-				Main.PlaySound(14, (int)npc.position.X, (int)npc.position.Y, 1);
+				SoundEngine.PlaySound(14, (int)npc.position.X, (int)npc.position.Y, 1);
 			}
 			npc.TargetClosest(true);
 			float num113 = 1f;

@@ -1,3 +1,4 @@
+using CrystiliumMod.Dusts;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -27,7 +28,7 @@ namespace CrystiliumMod.Projectiles
 		{
 			if (Main.rand.Next(2) == 0)
 			{
-				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType("AmethystDust"), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, DustType<AmethystDust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
 			}
 		}
 	}

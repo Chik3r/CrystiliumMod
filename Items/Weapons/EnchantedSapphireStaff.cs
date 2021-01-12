@@ -18,7 +18,7 @@ namespace CrystiliumMod.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.damage = 20; //The damage
-			item.summon = true; //Whether or not it is a magic weapon
+			item.DamageType = DamageClass.Summon; //Whether or not it is a magic weapon
 			item.width = 60; //Item width
 			item.height = 60; //Item height
 			item.maxStack = 1; //How many of this item you can stack
@@ -27,9 +27,9 @@ namespace CrystiliumMod.Items.Weapons
 			item.knockBack = 7f; //How much knockback the item produces
 			item.UseSound = SoundID.Item30; //The soundeffect played when used
 			item.noMelee = true; //Whether the weapon should do melee damage or not
-			item.useStyle = 5; //How the weapon is held, 5 is the gun hold style
+			item.useStyle = ItemUseStyleID.Shoot; //How the weapon is held, 5 is the gun hold style
 			item.value = 30000;
-			item.rare = 3;
+			item.rare = ItemRarityID.Orange;
 			item.shoot = ProjectileType<Projectiles.SapphirePortal>(); //What the item shoots, retains an int value | *
 			item.shootSpeed = 1f; //How fast the projectile fires
 			item.mana = 80;
@@ -38,13 +38,12 @@ namespace CrystiliumMod.Items.Weapons
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.SapphireStaff);
-			recipe.AddIngredient(ItemID.Sapphire, 15);
-			recipe.AddIngredient(ItemType<ShinyGemstone>(), 10);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.SapphireStaff)
+				.AddIngredient(ItemID.Sapphire, 15)
+				.AddIngredient(ItemType<ShinyGemstone>(), 10)
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) //This lets you modify the firing of the item

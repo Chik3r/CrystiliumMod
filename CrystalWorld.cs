@@ -5,14 +5,15 @@ using System.IO;
 using Terraria;
 using Terraria.GameContent.Generation;
 using Terraria.ID;
+using Terraria.IO;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ModLoader.IO;
-using Terraria.World.Generation;
+using Terraria.WorldBuilding;
 
 namespace CrystiliumMod
 {
-	public class CrystalWorld : ModWorld
+	public class CrystalWorld : ModSystem
 	{
 		public static int CrystalTiles = 0;
 		private static List<Point> BiomeCenters;
@@ -20,12 +21,12 @@ namespace CrystiliumMod
 		// TODO, auto SendData using property?
 		public static bool downedCrystalKing = false;
 
-		public override void Initialize()
+		public override void OnWorldLoad()
 		{
 			downedCrystalKing = false;
 		}
 
-		public override TagCompound Save()
+		public override TagCompound SaveWorldData()
 		{
 			var downed = new List<string>();
 			if (downedCrystalKing) downed.Add("crystalKing");
@@ -35,7 +36,7 @@ namespace CrystiliumMod
 			};
 		}
 
-		public override void Load(TagCompound tag)
+		public override void LoadWorldData(TagCompound tag)
 		{
 			if (tag.ContainsKey("downed"))
 			{
@@ -67,7 +68,7 @@ namespace CrystiliumMod
 				// Shinies pass removed by some other mod.
 				return;
 			}
-			tasks.Insert(ShiniesIndex + 1, new PassLegacy("CrystalBiomeGen", delegate (GenerationProgress progress)
+			tasks.Insert(ShiniesIndex + 1, new PassLegacy("CrystalBiomeGen", delegate (GenerationProgress progress, GameConfiguration configuration)
 			{
 				progress.Message = "Polishing crystals";
 				// 4200 1200
@@ -183,7 +184,7 @@ namespace CrystiliumMod
 				// Lihzahrd Altars pass removed by some other mod.
 				return;
 			}
-			tasks.Insert(LihzahrdAltarsIndex, new PassLegacy("CrystalBiomeGenFountain", delegate (GenerationProgress progress)
+			tasks.Insert(LihzahrdAltarsIndex, new PassLegacy("CrystalBiomeGenFountain", delegate (GenerationProgress progress, GameConfiguration configuration)
 			{
 				progress.Message = "Polishing more crystals";
 

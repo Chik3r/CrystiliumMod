@@ -23,7 +23,7 @@ namespace CrystiliumMod.Projectiles
 			projectile.tileCollide = false;
 			projectile.penetrate = -1;
 			projectile.ownerHitCheck = true;
-			projectile.melee = true;
+			projectile.DamageType = DamageClass.Melee;
 			projectile.timeLeft = 90;
 			projectile.hide = true;
 		}

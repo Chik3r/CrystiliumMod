@@ -15,7 +15,7 @@ namespace CrystiliumMod.Projectiles
 		public override void SetDefaults()
 		{
 			projectile.friendly = true;
-			projectile.magic = true;
+			projectile.DamageType = DamageClass.Magic;
 			projectile.penetrate = 1000;
 			projectile.tileCollide = false;
 			projectile.timeLeft = 40;

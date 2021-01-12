@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -28,48 +29,29 @@ namespace CrystiliumMod
 			instance = null;
 		}
 
-		public override void Close()
-		{
-			// Fix a tModLoader bug.
-			var slots = new int[] {
-				GetSoundSlot(SoundType.Music, "Sounds/Music/CrystalKing"),
-				GetSoundSlot(SoundType.Music, "Sounds/Music/CrystallineFlows")
-			};
-			foreach (var slot in slots) // Other mods crashing during loading can leave Main.music in a weird state.
-			{
-				if (Main.music.IndexInRange(slot) && Main.music[slot]?.IsPlaying == true)
-				{
-					Main.music[slot].Stop(Microsoft.Xna.Framework.Audio.AudioStopOptions.Immediate);
-				}
-			}
+		// TODO: Port?
+		//public override void Close()
+		//{
+		//	// Fix a tModLoader bug.
+		//	var slots = new int[] {
+		//		GetSoundSlot(SoundType.Music, "Sounds/Music/CrystalKing"),
+		//		GetSoundSlot(SoundType.Music, "Sounds/Music/CrystallineFlows")
+		//	};
+		//	foreach (var slot in slots) // Other mods crashing during loading can leave Main.music in a weird state.
+		//	{
+		//		Main.audioSystem.IsTrackPlaying(slot)
+		//		if (Main.music.IndexInRange(slot) && Main.music[slot]?.IsPlaying == true)
+		//		{
+		//			Main.music[slot].Stop(Microsoft.Xna.Framework.Audio.AudioStopOptions.Immediate);
+		//		}
+		//	}
 
-			base.Close();
-		}
-
-		public override void AddRecipes()
-		{
-		}
-
-		public override void UpdateMusic(ref int music, ref MusicPriority priority)
-		{
-			if (Main.myPlayer == -1 || Main.gameMenu || !Main.LocalPlayer.active)
-			{
-				return;
-			}
-			Player player = Main.LocalPlayer;
-			if (player.GetModPlayer<CrystalPlayer>().ZoneCrystal)
-			{
-				// TODO: alt music possibly.
-				//var normalMusic = this.GetSoundSlot(SoundType.Music, "Sounds/Music/CrystallineFlows");
-				//if(music != normalMusic && Main.rand.NextBool(10))
-				music = this.GetSoundSlot(SoundType.Music, "Sounds/Music/CrystallineFlows");
-				priority = MusicPriority.BiomeMedium;
-			}
-		}
+		//	base.Close();
+		//}
 
 		public override void PostSetupContent()
 		{
-			Mod bossChecklist = ModLoader.GetMod("BossChecklist");
+			ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist);
 			if (bossChecklist != null)
 			{
 				bossChecklist.Call(

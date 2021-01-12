@@ -25,7 +25,7 @@ namespace CrystiliumMod.Projectiles
 			projectile.height = 46;
 			projectile.friendly = true;
 			projectile.tileCollide = false;
-			projectile.melee = true;
+			projectile.DamageType = DamageClass.Melee;
 			projectile.penetrate = -1;
 			projectile.aiStyle = 75;
 			aiType = 595;
@@ -86,7 +86,7 @@ namespace CrystiliumMod.Projectiles
 		//		  projectile.soundDelay--;
 		//		  if (projectile.soundDelay <= 0)
 		//		  {
-		//				Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 1);
+		//				SoundEngine.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 1);
 		//				projectile.soundDelay = 12;
 		//		  }
 		//		  if (Main.myPlayer == projectile.owner)

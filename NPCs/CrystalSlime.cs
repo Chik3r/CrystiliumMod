@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -35,24 +36,22 @@ namespace CrystiliumMod.NPCs
 			return Main.tile[(int)(spawnInfo.spawnTileX), (int)(spawnInfo.spawnTileY)].type == TileType<Tiles.CrystalBlock>() ? 10f : 0f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
-		{
-			if (npc.life <= 0)
-			{
-				//spawn gore set
-				for (int i = 1; i <= 4; i++)
-				{
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Slime_Gore_" + i));
-				}
-			}
-		}
+		// TODO: GetGoreSlot
+		//public override void HitEffect(int hitDirection, double damage)
+		//{
+		//	if (npc.life <= 0)
+		//	{
+		//		//spawn gore set
+		//		for (int i = 1; i <= 4; i++)
+		//		{
+		//			Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Slime_Gore_" + i));
+		//		}
+		//	}
+		//}
 
-		public override void NPCLoot()
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			if (Main.rand.Next(2) == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemType<Items.ShinyGemstone>());
-			}
+			npcLoot.Add(new CommonDrop(ItemType<Items.ShinyGemstone>(), 2));
 		}
 
 		public override void AI()

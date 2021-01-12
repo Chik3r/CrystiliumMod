@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -32,13 +33,13 @@ namespace CrystiliumMod.Projectiles
 			if (++projectile.frameCounter % 2 == 0) projectile.frame++;
 			if (projectile.frame >= 4) projectile.frame = 0;
 			string tex = "Projectiles/RPC" + (int)(projectile.ai[1] + 1);
-			spriteBatch.Draw(mod.GetTexture(tex), projectile.Center - Main.screenPosition, new Rectangle(0, projectile.height * projectile.frame, projectile.width, projectile.height), lightColor, projectile.rotation, new Vector2(projectile.width / 2, projectile.height / 2), projectile.scale, SpriteEffects.None, 0f);
+			spriteBatch.Draw(Mod.GetTexture(tex).Value, projectile.Center - Main.screenPosition, new Rectangle(0, projectile.height * projectile.frame, projectile.width, projectile.height), lightColor, projectile.rotation, new Vector2(projectile.width / 2, projectile.height / 2), projectile.scale, SpriteEffects.None, 0f);
 			return false;
 		}
 
 		public override void Kill(int timeLeft)
 		{
-			Main.PlaySound(2, projectile.Center, 27);
+			SoundEngine.PlaySound(2, projectile.Center, 27);
 
 			//Make shards! Twice as many if type 0 (blue).
 			int numShards = 15;
@@ -49,7 +50,22 @@ namespace CrystiliumMod.Projectiles
 				float rand = Main.rand.NextFloat() * 6.283f;
 				vel = vel.RotatedBy(rand);
 				vel *= 5f;
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 20, vel.X, vel.Y, mod.ProjectileType("Shatter" + (1 + Main.rand.Next(0, 3))), projectile.damage - 8, 0, Main.myPlayer);
+
+				int projType = 0;
+				switch (Main.rand.Next(0, 3))
+				{
+					case 0:
+						projType = ProjectileType<Shatter1>();
+						break;
+					case 1:
+						projType = ProjectileType<Shatter2>();
+						break;
+					case 2:
+						projType = ProjectileType<Shatter3>();
+						break;
+				}
+
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 20, vel.X, vel.Y, projType, projectile.damage - 8, 0, Main.myPlayer);
 			}
 		}
 	}

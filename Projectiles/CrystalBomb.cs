@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -34,7 +35,7 @@ namespace CrystiliumMod.Projectiles
 			projectile.penetrate--;
 			if (projectile.penetrate <= 0)
 			{
-				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+				SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
 				projectile.Kill();
 			}
 			else
@@ -49,14 +50,14 @@ namespace CrystiliumMod.Projectiles
 					projectile.velocity.Y = -oldVelocity.Y;
 				}
 				projectile.velocity *= 0.75f;
-				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+				SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
 			}
 			return false;
 		}
 
 		public override void Kill(int timeLeft)
 		{
-			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+			SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
 			for (int k = 0; k < 15; k++)
 			{
 				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, DustType<Dusts.Sparkle>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
@@ -67,7 +68,22 @@ namespace CrystiliumMod.Projectiles
 				float rand = Main.rand.NextFloat() * 6.283f;
 				vel = vel.RotatedBy(rand);
 				vel *= 5f;
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 20, vel.X, vel.Y, mod.ProjectileType("Shatter" + (1 + Main.rand.Next(0, 3))), projectile.damage - 8, 0, projectile.owner);
+
+				int projType = 0;
+				switch (Main.rand.Next(0, 3))
+				{
+					case 0:
+						projType = ProjectileType<Shatter1>();
+						break;
+					case 1:
+						projType = ProjectileType<Shatter2>();
+						break;
+					case 2:
+						projType = ProjectileType<Shatter3>();
+						break;
+				}
+
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 20, vel.X, vel.Y, projType, projectile.damage - 8, 0, projectile.owner);
 			}
 		}
 

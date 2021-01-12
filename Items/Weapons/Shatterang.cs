@@ -15,16 +15,16 @@ namespace CrystiliumMod.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.damage = 90;
-			item.thrown = true;
+			item.DamageType = DamageClass.Throwing;
 			item.width = 30;
 			item.height = 30;
 			item.useTime = 25;
 			item.useAnimation = 25;
 			item.noUseGraphic = true;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.Swing;
 			item.knockBack = 3;
 			item.value = 80000;
-			item.rare = 8;
+			item.rare = ItemRarityID.Yellow;
 			item.shootSpeed = 16f;
 			item.shoot = ProjectileType<Projectiles.ShatterangProj>();
 			item.UseSound = SoundID.Item1;
@@ -45,11 +45,10 @@ namespace CrystiliumMod.Items.Weapons
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<CrystiliumBar>(), 15);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemType<CrystiliumBar>(), 15)
+				.AddTile(TileID.MythrilAnvil)
+				.Register();
 		}
 	}
 }

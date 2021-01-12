@@ -32,7 +32,9 @@ namespace CrystiliumMod.Tiles
 			TileObjectData.newTile.LavaDeath = true;
 			TileObjectData.newTile.RandomStyleRange = 3;
 			TileObjectData.addTile(Type);
-			sapling = true;
+			// TODO: Check how to port sapling
+			//sapling = true;
+			TileID.Sets.TreeSapling[Type] = true;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Sapling");
 			AddMapEntry(new Color(200, 200, 200), name);

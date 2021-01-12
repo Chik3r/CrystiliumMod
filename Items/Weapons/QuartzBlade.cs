@@ -18,7 +18,7 @@ namespace CrystiliumMod.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.damage = 54;
-			item.melee = true;
+			item.DamageType = DamageClass.Melee;
 			item.width = 40;
 			item.height = 40;
 			item.useTime = 25;
@@ -41,9 +41,9 @@ namespace CrystiliumMod.Items.Weapons
 			Vector2 newVect2 = origVect.RotatedBy(-System.Math.PI / 20);
 
 			//create three Crystishae projectiles
-			Projectile.NewProjectile(player.Center.X, player.Center.Y - 20, speedX, speedY, ProjectileType<QuartzTrident>(), damage, knockBack, item.owner, 0, 0);
-			Projectile.NewProjectile(player.Center.X, player.Center.Y - 20, newVect.X, newVect.Y, ProjectileType<QuartzTrident>(), damage, knockBack, item.owner, 0, 0);
-			Projectile.NewProjectile(player.Center.X, player.Center.Y - 20, newVect2.X, newVect2.Y, ProjectileType<QuartzTrident>(), damage, knockBack, item.owner, 0, 0);
+			Projectile.NewProjectile(player.Center.X, player.Center.Y - 20, speedX, speedY, ProjectileType<QuartzTrident>(), damage, knockBack, item.playerIndexTheItemIsReservedFor, 0, 0);
+			Projectile.NewProjectile(player.Center.X, player.Center.Y - 20, newVect.X, newVect.Y, ProjectileType<QuartzTrident>(), damage, knockBack, item.playerIndexTheItemIsReservedFor, 0, 0);
+			Projectile.NewProjectile(player.Center.X, player.Center.Y - 20, newVect2.X, newVect2.Y, ProjectileType<QuartzTrident>(), damage, knockBack, item.playerIndexTheItemIsReservedFor, 0, 0);
 			return false;
 		}
 

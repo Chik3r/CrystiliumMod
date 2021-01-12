@@ -20,22 +20,21 @@ namespace CrystiliumMod.Items.Armor
 			item.width = 18;
 			item.height = 18;
 			item.value = 100000;
-			item.rare = 8;
+			item.rare = ItemRarityID.Yellow;
 			item.defense = 12;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-			player.magicCrit += 9;
+			player.GetCrit(DamageClass.Magic) += 9;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<Items.CrystiliumBar>(), 12);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemType<Items.CrystiliumBar>(), 12)
+				.AddTile(TileID.MythrilAnvil)
+				.Register();
 		}
 	}
 }

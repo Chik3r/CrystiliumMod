@@ -1,5 +1,7 @@
 using System;
+using CrystiliumMod.Dusts;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -36,7 +38,7 @@ namespace CrystiliumMod.Projectiles //We need this to basically indicate the fol
 			{
 				for (int i = 0; i < 15; i++)
 				{
-					Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("VortexDust"), (float)Main.rand.Next(-3, 3), (float)Main.rand.Next(-3, 3), 0);
+					Dust.NewDust(projectile.position, projectile.width, projectile.height, DustType<VortexDust>(), (float)Main.rand.Next(-3, 3), (float)Main.rand.Next(-3, 3), 0);
 				}
 			}
 
@@ -63,7 +65,7 @@ namespace CrystiliumMod.Projectiles //We need this to basically indicate the fol
 
 					float velX = dirX * factor;
 					float velY = dirY * factor;
-					Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 13);
+					SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 13);
 					Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, velX, velY, ProjectileType<VortexCrystal>(), projectile.damage + 1, 0, projectile.owner);
 				}
 			}

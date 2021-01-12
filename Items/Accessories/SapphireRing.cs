@@ -29,16 +29,15 @@ namespace CrystiliumMod.Items.Accessories
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.TungstenBar, 4);
-			recipe.AddIngredient(ItemID.Sapphire, 3);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.SilverBar, 4);
-			recipe.AddIngredient(ItemID.Sapphire, 3);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.TungstenBar, 4)
+				.AddIngredient(ItemID.Sapphire, 3)
+				.Register();
+
+			CreateRecipe()
+				.AddIngredient(ItemID.SilverBar, 4)
+				.AddIngredient(ItemID.Sapphire, 3)
+				.Register();
 		}
 	}
 }

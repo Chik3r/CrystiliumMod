@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -7,11 +8,11 @@ namespace CrystiliumMod
 {
 	public class CrystiliumGlobalNPC : GlobalNPC
 	{
-		public override void NPCLoot(NPC npc)
+		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
 		{
-			if (npc.type == NPCID.Mothron && Main.rand.Next(4) == 0)
+			if (npc.type == NPCID.Mothron)
 			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemType<Items.BrokenStaff>());
+				npcLoot.Add(ItemDropRule.Common(ItemType<Items.BrokenStaff>(), 4));
 			}
 		}
 	}

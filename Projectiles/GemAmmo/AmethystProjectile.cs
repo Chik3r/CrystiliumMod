@@ -19,7 +19,7 @@ namespace CrystiliumMod.Projectiles.GemAmmo
 			projectile.height = 12;
 			projectile.aiStyle = 1;
 			projectile.friendly = true;
-			projectile.ranged = true;
+			projectile.DamageType = DamageClass.Ranged;
 			projectile.penetrate = 2;
 			projectile.timeLeft = 600;
 			projectile.damage = 10;

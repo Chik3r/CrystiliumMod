@@ -29,11 +29,10 @@ namespace CrystiliumMod.Items.Accessories
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.FossilOre, 4);
-			recipe.AddIngredient(ItemID.Amber, 3);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.FossilOre, 4)
+				.AddIngredient(ItemID.Amber, 3)
+				.Register();
 		}
 	}
 }

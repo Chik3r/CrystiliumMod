@@ -29,7 +29,7 @@ namespace CrystiliumMod.Items.Weapons
 			item.shoot = ProjectileType<Projectiles.SlamboriteProj>();
 			item.shootSpeed = 15.1F;
 			item.UseSound = SoundID.Item1;
-			item.melee = true; // Deals melee damage.
+			item.DamageType = DamageClass.Melee; // Deals melee damage.
 			item.channel = true; // We can keep the left mouse button down when trying to keep using this weapon.
 		}
 	}

@@ -24,11 +24,10 @@ namespace CrystiliumMod.Items.Weapons
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Grenade, 5);
-			recipe.AddIngredient(ItemType<ShinyGemstone>());
-			recipe.SetResult(this, 5);
-			recipe.AddRecipe();
+			CreateRecipe(5)
+				.AddIngredient(ItemID.Grenade, 5)
+				.AddIngredient(ItemType<ShinyGemstone>())
+				.Register();
 		}
 	}
 }

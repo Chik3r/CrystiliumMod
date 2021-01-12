@@ -31,12 +31,11 @@ namespace CrystiliumMod.Items.Armor
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.CrystalShard, 15);
-			recipe.AddIngredient(ItemType<Items.EnchantedGeode>(), 10);
-			recipe.AddTile(Terraria.ID.TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.CrystalShard, 15)
+				.AddIngredient(ItemType<Items.EnchantedGeode>(), 10)
+				.AddTile(TileID.Anvils)
+				.Register();
 		}
 	}
 }

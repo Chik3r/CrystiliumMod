@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -37,14 +38,13 @@ namespace CrystiliumMod.NPCs
 			return 0f;
 		}
 
-		public override void NPCLoot()
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 			//TODO, this use to reference an item called CrystalCharm, was it suppose to be CrystiliumHelmet? Also, old commented out code had GEM but didn't have PrismaticBoomstick or "CrystalCharm"/CrystiliumHelmet
 			int[] lootTable = { ItemType<Items.Accessories.CrystalMonocle>(), ItemType<Items.Weapons.PrismBlade>(), ItemType<Items.Weapons.Gemshot>(),
 				ItemType<Items.Weapons.Crystishae>(), ItemType<Items.Weapons.QuartzBlade>(), ItemType<Items.Weapons.DiamondSceptor>(),
 				ItemType<Items.Weapons.ManaDrainer>(), ItemType<Items.Armor.CrystiliumHelmet>(), ItemType<Items.Weapons.PrismaticBoomstick>()};
-			int loot = lootTable[Main.rand.Next(lootTable.Length)];
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, loot);
+			npcLoot.Add(new OneFromOptionsDropRule(lootTable.Length, 1, lootTable));
 		}
 	}
 }

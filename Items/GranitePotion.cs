@@ -32,13 +32,12 @@ namespace CrystiliumMod.Items
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<CrystalBottleWater>());
-			recipe.AddIngredient(ItemType<ShinyGemstone>());
-			recipe.AddIngredient(ItemID.Granite, 5);
-			recipe.AddTile(TileID.Bottles);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemType<CrystalBottleWater>())
+				.AddIngredient(ItemType<ShinyGemstone>())
+				.AddIngredient(ItemID.Granite, 5)
+				.AddTile(TileID.Bottles)
+				.Register();
 		}
 	}
 }

@@ -23,11 +23,10 @@ namespace CrystiliumMod.Items
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<ShinyGemstone>(), 5);
-			recipe.AddIngredient(ItemID.GoldenKey);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemType<ShinyGemstone>(), 5)
+				.AddIngredient(ItemID.GoldenKey)
+				.Register();
 		}
 	}
 }

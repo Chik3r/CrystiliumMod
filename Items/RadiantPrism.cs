@@ -26,11 +26,10 @@ namespace CrystiliumMod.Items
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<Placeable.RadiantOre>(), 3);
-			recipe.AddTile(TileID.Furnaces);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemType<Placeable.RadiantOre>(), 3)
+				.AddTile(TileID.Furnaces)
+				.Register();
 		}
 	}
 }

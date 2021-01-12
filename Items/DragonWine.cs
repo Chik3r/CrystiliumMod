@@ -28,7 +28,7 @@ namespace CrystiliumMod.Items
 			return;
 		}
 
-		public override bool UseItem(Player player)
+		public override bool? UseItem(Player player)
 		{
 			player.statLife -= 200;
 			player.AddBuff(BuffType<Buffs.DragonFury>(), 600);
@@ -41,14 +41,13 @@ namespace CrystiliumMod.Items
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<CrystalBottleWater>());
-			recipe.AddIngredient(ItemID.TissueSample);
-			recipe.AddIngredient(ItemID.Deathweed);
-			recipe.AddIngredient(ItemID.Ichor);
-			recipe.AddTile(TileID.Bottles);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemType<CrystalBottleWater>())
+				.AddIngredient(ItemID.TissueSample)
+				.AddIngredient(ItemID.Deathweed)
+				.AddIngredient(ItemID.Ichor)
+				.AddTile(TileID.Bottles)
+				.Register();
 		}
 	}
 }

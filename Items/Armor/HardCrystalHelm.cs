@@ -27,8 +27,8 @@ namespace CrystiliumMod.Items.Armor
 
 		public override void UpdateEquip(Player player)
 		{
-			player.magicDamage *= 1.06f;
-			player.minionDamage *= 1.06f;
+			player.GetDamage(DamageClass.Magic) *= 1.06f;
+			player.GetDamage(DamageClass.Summon) *= 1.06f;
 			player.maxMinions += 1;
 		}
 
@@ -40,18 +40,17 @@ namespace CrystiliumMod.Items.Armor
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = "10% mangic and summon damage";
-			player.magicDamage *= 1.10f;
-			player.minionDamage *= 1.10f;
+			player.GetDamage(DamageClass.Magic) *= 1.1f;
+			player.GetDamage(DamageClass.Summon) *= 1.1f;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.CrystalShard, 15);
-			recipe.AddIngredient(ItemType<Items.EnchantedGeode>(), 12);
-			recipe.AddTile(Terraria.ID.TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.CrystalShard, 15)
+				.AddIngredient(ItemType<Items.EnchantedGeode>(), 12)
+				.AddTile(Terraria.ID.TileID.Anvils)
+				.Register();
 		}
 	}
 }

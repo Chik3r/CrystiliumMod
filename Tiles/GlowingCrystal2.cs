@@ -39,9 +39,9 @@ namespace CrystiliumMod.Tiles
 			//name.SetDefault("Torch");
 			//AddMapEntry(new Color(200, 200, 200), name);
 			dustType = DustType<Dusts.Sparkle>();
-			disableSmartCursor = true;
+			TileID.Sets.DisableSmartCursor[Type] = true;
 			adjTiles = new int[] { TileID.Torches };
-			torch = true;
+			TileID.Sets.Torch[Type] = true;
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)
@@ -99,7 +99,7 @@ namespace CrystiliumMod.Tiles
 			{
 				float x = (float)Utils.RandomInt(ref randSeed, -10, 11) * 0.15f;
 				float y = (float)Utils.RandomInt(ref randSeed, -10, 1) * 0.35f;
-				Main.spriteBatch.Draw(mod.GetTexture("Tiles/GlowingCrystal_Flame"), new Vector2((float)(i * 16 - (int)Main.screenPosition.X) - (width - 16f) / 2f + x, (float)(j * 16 - (int)Main.screenPosition.Y + offsetY) + y) + zero, new Rectangle(frameX, frameY, width, height), color, 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
+				Main.spriteBatch.Draw(Mod.GetTexture("Tiles/GlowingCrystal_Flame").Value, new Vector2((float)(i * 16 - (int)Main.screenPosition.X) - (width - 16f) / 2f + x, (float)(j * 16 - (int)Main.screenPosition.Y + offsetY) + y) + zero, new Rectangle(frameX, frameY, width, height), color, 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
 			}
 		}
 	}

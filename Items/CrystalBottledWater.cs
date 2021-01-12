@@ -22,11 +22,10 @@ namespace CrystiliumMod.Items
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<Items.CrystalBottle>());
-			recipe.AddTile(TileType<Tiles.Fountain>());
-			recipe.SetResult(ItemType<Items.CrystalBottleWater>());
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemType<Items.CrystalBottle>())
+				.AddTile(TileType<Tiles.Fountain>())
+				.ReplaceResult(ItemType<Items.CrystalBottleWater>());
 		}
 	}
 }

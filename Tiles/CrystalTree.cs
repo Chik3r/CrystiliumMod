@@ -24,10 +24,11 @@ namespace CrystiliumMod.Tiles
 			return DustType<Dusts.CrystalDust>();
 		}
 
-		public override int GrowthFXGore()
-		{
-			return mod.GetGoreSlot("Gores/CrystalTreeFX");
-		}
+		// TODO: GetGoreSlot
+		//public override int GrowthFXGore()
+		//{
+		//	return mod.GetGoreSlot("Gores/CrystalTreeFX");
+		//}
 
 		public override int DropWood()
 		{
@@ -36,17 +37,17 @@ namespace CrystiliumMod.Tiles
 
 		public override Texture2D GetTexture()
 		{
-			return mod.GetTexture("Tiles/CrystalTree");
+			return mod.GetTexture("Tiles/CrystalTree").Value;
 		}
 
 		public override Texture2D GetTopTextures(int i, int j, ref int frame, ref int frameWidth, ref int frameHeight, ref int xOffsetLeft, ref int yOffset)
 		{
-			return mod.GetTexture("Tiles/CrystalTree_Tops");
+			return mod.GetTexture("Tiles/CrystalTree_Tops").Value;
 		}
 
 		public override Texture2D GetBranchTextures(int i, int j, int trunkOffset, ref int frame)
 		{
-			return mod.GetTexture("Tiles/CrystalTree_Branches");
+			return mod.GetTexture("Tiles/CrystalTree_Branches").Value;
 		}
 	}
 }

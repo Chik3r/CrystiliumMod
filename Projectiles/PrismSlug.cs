@@ -1,5 +1,7 @@
+using CrystiliumMod.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -33,7 +35,7 @@ namespace CrystiliumMod.Projectiles //We need this to basically indicate the fol
 				projectile.Kill();
 				for (int k = 0; k < 6; k++)
 				{
-					Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("CrystalDust"), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
+					Dust.NewDust(projectile.position, projectile.width, projectile.height, DustType<CrystalDust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
 				}
 			}
 			else
@@ -46,7 +48,7 @@ namespace CrystiliumMod.Projectiles //We need this to basically indicate the fol
 				{
 					projectile.velocity.Y = -oldVelocity.Y;
 				}
-				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
+				SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 10);
 			}
 			return false;
 		}
@@ -58,8 +60,8 @@ namespace CrystiliumMod.Projectiles //We need this to basically indicate the fol
 			projectile.frameCounter++;
 			if (projectile.frameCounter >= 8)
 			{
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("CrystalDust"), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("CrystalDust"), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
+				Dust.NewDust(projectile.position, projectile.width, projectile.height, DustType<CrystalDust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
+				Dust.NewDust(projectile.position, projectile.width, projectile.height, DustType<CrystalDust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
 				projectile.frameCounter = 0;
 				projectile.frame = (projectile.frame + 1) % 7;
 			}

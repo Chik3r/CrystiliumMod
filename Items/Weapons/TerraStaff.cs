@@ -19,17 +19,17 @@ namespace CrystiliumMod.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.damage = 96;
-			item.magic = true;
+			item.DamageType = DamageClass.Magic;
 			item.mana = 3;
 			item.width = 40;
 			item.height = 40;
 			item.useTime = 22;
 			item.useAnimation = 22;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.Shoot;
 			item.noMelee = true;
 			item.knockBack = 5;
 			item.value = 100000;
-			item.rare = 8;
+			item.rare = ItemRarityID.Yellow;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = ProjectileType<AmberDagger>();
@@ -38,17 +38,16 @@ namespace CrystiliumMod.Items.Weapons
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<TrueRubyStaff>());
-			recipe.AddIngredient(ItemType<TrueEmeraldStaff>());
-			recipe.AddIngredient(ItemType<TrueDiamondStaff>());
-			recipe.AddIngredient(ItemType<TrueSapphireStaff>());
-			recipe.AddIngredient(ItemType<TrueAmethystStaff>());
-			recipe.AddIngredient(ItemType<TrueTopazStaff>());
-			recipe.AddIngredient(ItemType<TrueAmberStaff>());
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemType<TrueRubyStaff>())
+				.AddIngredient(ItemType<TrueEmeraldStaff>())
+				.AddIngredient(ItemType<TrueDiamondStaff>())
+				.AddIngredient(ItemType<TrueSapphireStaff>())
+				.AddIngredient(ItemType<TrueAmethystStaff>())
+				.AddIngredient(ItemType<TrueTopazStaff>())
+				.AddIngredient(ItemType<TrueAmberStaff>())
+				.AddTile(TileID.MythrilAnvil)
+				.Register();
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

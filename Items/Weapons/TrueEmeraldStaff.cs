@@ -18,17 +18,17 @@ namespace CrystiliumMod.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.damage = 65;
-			item.magic = true;
+			item.DamageType = DamageClass.Magic;
 			item.mana = 9;
 			item.width = 40;
 			item.height = 40;
 			item.useTime = 7;
 			item.useAnimation = 7;
-			item.useStyle = 5;
+			item.useStyle = ItemUseStyleID.Shoot;
 			item.noMelee = true;
 			item.knockBack = 5;
 			item.value = 120000; //How much the item is worth
-			item.rare = 8; //The rarity of the item
+			item.rare = ItemRarityID.Yellow; //The rarity of the item
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = ProjectileType<Projectiles.AmberDagger>();
@@ -37,13 +37,12 @@ namespace CrystiliumMod.Items.Weapons
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<Items.CrystiliumBar>(), 15);
-			recipe.AddIngredient(ItemType<Items.Weapons.EnchantedEmeraldStaff>());
-			recipe.AddIngredient(ItemType<Items.BrokenStaff>());
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemType<Items.CrystiliumBar>(), 15)
+				.AddIngredient(ItemType<Items.Weapons.EnchantedEmeraldStaff>())
+				.AddIngredient(ItemType<Items.BrokenStaff>())
+				.AddTile(TileID.MythrilAnvil)
+				.Register();
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

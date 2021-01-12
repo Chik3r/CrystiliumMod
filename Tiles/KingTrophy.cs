@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ObjectData;
@@ -17,7 +19,7 @@ namespace CrystiliumMod.Tiles
 			TileObjectData.newTile.StyleWrapLimit = 36;
 			TileObjectData.addTile(Type);
 			dustType = 7;
-			disableSmartCursor = true;
+			TileID.Sets.DisableSmartCursor[Type] = true;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Trophy");
 			AddMapEntry(new Color(120, 85, 60), name);
@@ -38,7 +40,7 @@ namespace CrystiliumMod.Tiles
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
 			Item.NewItem(i * 16, j * 16, 32, 16, ItemType<Items.Placeable.KingTrophy>());
-			Main.PlaySound(2, i * 16, j * 16, 27);
+			SoundEngine.PlaySound(2, i * 16, j * 16, 27);
 		}
 	}
 }

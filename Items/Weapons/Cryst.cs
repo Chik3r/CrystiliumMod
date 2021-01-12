@@ -19,17 +19,17 @@ namespace CrystiliumMod.Items.Weapons
 		public override void SetDefaults()
 		{
 			item.damage = 67;
-			item.summon = true;
+			item.DamageType = DamageClass.Summon;
 			item.mana = 17;
 			item.width = 40;
 			item.height = 40;
 			item.useTime = 41;
 			item.useAnimation = 41;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.Swing;
 			item.noMelee = true;
 			item.knockBack = 5;
 			item.value = 100000;
-			item.rare = 7;
+			item.rare = ItemRarityID.Lime;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = ProjectileType<Projectiles.CrystProj>();

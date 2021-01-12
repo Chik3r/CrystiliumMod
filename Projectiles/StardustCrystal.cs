@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -23,7 +24,7 @@ namespace CrystiliumMod.Projectiles
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
-			Main.PlaySound(0, projectile.Center);
+			SoundEngine.PlaySound(0, projectile.Center);
 			return base.OnTileCollide(oldVelocity);
 		}
 	}

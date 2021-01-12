@@ -1,5 +1,7 @@
+using CrystiliumMod.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -38,29 +40,27 @@ namespace CrystiliumMod.NPCs
 			return 0f;
 		}
 
-		public override void HitEffect(int hitDirection, double damage)
-		{
-			if (npc.life <= 0)
-			{
-				//spawn initial set
-				for (int i = 1; i <= 4; i++)
-				{
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Geode_Monster_Gore_" + i));
-				}
-				//spawn rest of the legs
-				for (int i = 0; i < 3; i++)
-				{
-					Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Geode_Monster_Gore_2"));
-				}
-			}
-		}
+		// TODO: GetGoreSlot
+		//public override void HitEffect(int hitDirection, double damage)
+		//{
+		//	if (npc.life <= 0)
+		//	{
+		//		//spawn initial set
+		//		for (int i = 1; i <= 4; i++)
+		//		{
+		//			Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Geode_Monster_Gore_" + i));
+		//		}
+		//		//spawn rest of the legs
+		//		for (int i = 0; i < 3; i++)
+		//		{
+		//			Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Geode_Monster_Gore_2"));
+		//		}
+		//	}
+		//}
 
-		public override void NPCLoot()
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
-			if (Main.rand.Next(2) == 0)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemType<Items.EnchantedGeode>());
-			}
+			npcLoot.Add(new CommonDrop(ItemType<Items.EnchantedGeode>(), 2));
 		}
 
 		public override void AI()
@@ -87,7 +87,22 @@ namespace CrystiliumMod.NPCs
 					float rand = Main.rand.NextFloat() * 6.283f;
 					vel = vel.RotatedBy(rand);
 					vel *= 5f;
-					Projectile.NewProjectile(npc.Center.X, npc.Center.Y + 20, vel.X, vel.Y, mod.ProjectileType("ShatterEnemy" + (1 + Main.rand.Next(0, 3))), 25, 0, Main.myPlayer);
+
+					int projType = 0;
+					switch (Main.rand.Next(0, 3))
+					{
+						case 0:
+							projType = ProjectileType<ShatterEnemy1>();
+							break;
+						case 1:
+							projType = ProjectileType<ShatterEnemy2>();
+							break;
+						case 2:
+							projType = ProjectileType<ShatterEnemy3>();
+							break;
+					}
+
+					Projectile.NewProjectile(npc.Center.X, npc.Center.Y + 20, vel.X, vel.Y, projType, 25, 0, Main.myPlayer);
 				}
 			}
 		}

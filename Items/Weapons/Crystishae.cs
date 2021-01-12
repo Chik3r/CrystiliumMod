@@ -18,9 +18,9 @@ namespace CrystiliumMod.Items.Weapons
 		{
 			item.CloneDefaults(ItemID.ThornChakram);
 			item.damage = 77;
-			item.thrown = true;
+			item.DamageType = DamageClass.Throwing;
 			item.value = Item.sellPrice(0, 1, 0, 0);
-			item.rare = 6;
+			item.rare = ItemRarityID.LightPurple;
 			item.shoot = ProjectileType<Projectiles.Crystishae>();
 		}
 

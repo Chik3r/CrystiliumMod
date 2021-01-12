@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
@@ -17,7 +18,7 @@ namespace CrystiliumMod.Projectiles
 		{
 			projectile.aiStyle = 113;
 			projectile.friendly = true;
-			projectile.thrown = true;
+			projectile.DamageType = DamageClass.Throwing;
 			projectile.penetrate = 5;
 			projectile.timeLeft = 600;
 			projectile.alpha = 255;
@@ -37,7 +38,7 @@ namespace CrystiliumMod.Projectiles
 			{
 				Dust.NewDust(projectile.position, projectile.width, projectile.height, DustType<Dusts.Sparkle>());
 			}
-			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
+			SoundEngine.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
 		}
 
 		//public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

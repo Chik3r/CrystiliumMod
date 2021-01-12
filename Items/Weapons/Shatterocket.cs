@@ -19,9 +19,9 @@ namespace CrystiliumMod.Items.Weapons
 		{
 			item.CloneDefaults(ItemID.ElectrosphereLauncher); //grabs values we're not bothering to change yet
 			item.damage = 76;
-			item.ranged = true;
+			item.DamageType = DamageClass.Ranged;
 			item.value = 100000;
-			item.rare = 7;
+			item.rare = ItemRarityID.Lime;
 			item.autoReuse = true;
 			item.useTime = 10;
 			item.useAnimation = 20;
