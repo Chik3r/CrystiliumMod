@@ -10,52 +10,52 @@ namespace CrystiliumMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			Main.projFrames[projectile.type] = 4;
+			Main.projFrames[Projectile.type] = 4;
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.aiStyle = 14;
-			projectile.penetrate = 1;
-			projectile.timeLeft = 400;
-			projectile.width = 18;
-			projectile.height = 16;
-			projectile.friendly = true;
-			projectile.alpha = 80;
-			projectile.light = 0.5f;
+			Projectile.aiStyle = 14;
+			Projectile.penetrate = 1;
+			Projectile.timeLeft = 400;
+			Projectile.width = 18;
+			Projectile.height = 16;
+			Projectile.friendly = true;
+			Projectile.alpha = 80;
+			Projectile.light = 0.5f;
 		}
 
 		public override void AI()
 		{
-			projectile.frameCounter++;
-			if (projectile.frameCounter >= 8)
+			Projectile.frameCounter++;
+			if (Projectile.frameCounter >= 8)
 			{
-				projectile.frameCounter = 0;
-				projectile.frame = (projectile.frame + 1) % 2;
+				Projectile.frameCounter = 0;
+				Projectile.frame = (Projectile.frame + 1) % 2;
 			}
 		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
-			projectile.penetrate--;
-			if (projectile.penetrate <= 0)
+			Projectile.penetrate--;
+			if (Projectile.penetrate <= 0)
 			{
-				SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
-				projectile.Kill();
+				SoundEngine.PlaySound(2, (int)Projectile.position.X, (int)Projectile.position.Y, 27);
+				Projectile.Kill();
 			}
 			else
 			{
-				projectile.ai[0] += 0.1f;
-				if (projectile.velocity.X != oldVelocity.X)
+				Projectile.ai[0] += 0.1f;
+				if (Projectile.velocity.X != oldVelocity.X)
 				{
-					projectile.velocity.X = -oldVelocity.X;
+					Projectile.velocity.X = -oldVelocity.X;
 				}
-				if (projectile.velocity.Y != oldVelocity.Y)
+				if (Projectile.velocity.Y != oldVelocity.Y)
 				{
-					projectile.velocity.Y = -oldVelocity.Y;
+					Projectile.velocity.Y = -oldVelocity.Y;
 				}
-				projectile.velocity *= 0.75f;
-				SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+				Projectile.velocity *= 0.75f;
+				SoundEngine.PlaySound(2, (int)Projectile.position.X, (int)Projectile.position.Y, 27);
 			}
 			return false;
 		}
@@ -64,15 +64,15 @@ namespace CrystiliumMod.Projectiles
 		{
 			for (int k = 0; k < 10; k++)
 			{
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, 206, projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
+				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 206, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
 			}
-			SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
-			Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, ProjectileType<DiamondExplosion>(), projectile.damage, 0, Main.myPlayer);
+			SoundEngine.PlaySound(2, (int)Projectile.position.X, (int)Projectile.position.Y, 27);
+			Projectile.NewProjectile(Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<DiamondExplosion>(), Projectile.damage, 0, Main.myPlayer);
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			projectile.Kill();
+			Projectile.Kill();
 		}
 	}
 }

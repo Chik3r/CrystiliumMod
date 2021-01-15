@@ -12,27 +12,27 @@ namespace CrystiliumMod.Items.Weapons
 		{
 			DisplayName.SetDefault("Vortex Crystal Gauntlet");
 			Tooltip.SetDefault("'A shiny swirl consumes your arm'");
-			Item.staff[item.type] = true;
+			Item.staff[Item.type] = true;
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 110; //The damage
-			item.DamageType = DamageClass.Ranged;
-			item.width = 60; //Item width
-			item.height = 60; //Item height
-			item.maxStack = 1; //How many of this item you can stack
-			item.useTime = 50; //How long it takes for the item to be used
-			item.useAnimation = 50; //How long the animation of the item takes
-			item.knockBack = 7f; //How much knockback the item produces
-			item.UseSound = SoundID.Item30; //The soundeffect played when used
-			item.noMelee = true; //Whether the weapon should do melee damage or not
-			item.useStyle = ItemUseStyleID.Shoot; //How the weapon is held, 5 is the gun hold style
-			item.value = 30000;
-			item.rare = ItemRarityID.Orange;
-			item.shoot = ProjectileType<Projectiles.VortexPortal>(); //What the item shoots, retains an int value | *
-			item.shootSpeed = 0f; //How fast the projectile fires
-			item.autoReuse = false; //Whether it automatically uses the item again after its done being used/animated
+			Item.damage = 110; //The damage
+			Item.DamageType = DamageClass.Ranged;
+			Item.width = 60; //Item width
+			Item.height = 60; //Item height
+			Item.maxStack = 1; //How many of this item you can stack
+			Item.useTime = 50; //How long it takes for the item to be used
+			Item.useAnimation = 50; //How long the animation of the item takes
+			Item.knockBack = 7f; //How much knockback the item produces
+			Item.UseSound = SoundID.Item30; //The soundeffect played when used
+			Item.noMelee = true; //Whether the weapon should do melee damage or not
+			Item.useStyle = ItemUseStyleID.Shoot; //How the weapon is held, 5 is the gun hold style
+			Item.value = 30000;
+			Item.rare = ItemRarityID.Orange;
+			Item.shoot = ProjectileType<Projectiles.VortexPortal>(); //What the item shoots, retains an int value | *
+			Item.shootSpeed = 0f; //How fast the projectile fires
+			Item.autoReuse = false; //Whether it automatically uses the item again after its done being used/animated
 		}
 
 		public override void AddRecipes()

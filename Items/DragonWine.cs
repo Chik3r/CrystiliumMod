@@ -15,16 +15,16 @@ namespace CrystiliumMod.Items
 
 		public override void SetDefaults()
 		{
-			item.UseSound = SoundID.Item3;
-			item.useStyle = 2;
-			item.useTurn = true;
-			item.useAnimation = 20;
-			item.useTime = 20;
-			item.maxStack = 30;
-			item.consumable = true;
-			item.value = 3500;
-			item.rare = 0;
-			item.buffTime = 600;
+			Item.UseSound = SoundID.Item3;
+			Item.useStyle = 2;
+			Item.useTurn = true;
+			Item.useAnimation = 20;
+			Item.useTime = 20;
+			Item.maxStack = 30;
+			Item.consumable = true;
+			Item.value = 3500;
+			Item.rare = 0;
+			Item.buffTime = 600;
 			return;
 		}
 

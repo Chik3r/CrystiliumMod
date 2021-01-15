@@ -13,21 +13,21 @@ namespace CrystiliumMod.NPCs
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Crystal Zombie");
-			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Zombie];
+			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Zombie];
 		}
 
 		public override void SetDefaults()
 		{
-			npc.width = 18;
-			npc.height = 40;
-			npc.damage = 21;
-			npc.defense = 12;
-			npc.lifeMax = 120;
-			npc.HitSound = SoundID.NPCHit5;
-			npc.DeathSound = SoundID.NPCDeath6;
-			npc.value = 300f;
-			npc.knockBackResist = 0.75f;
-			npc.aiStyle = 3;
+			NPC.width = 18;
+			NPC.height = 40;
+			NPC.damage = 21;
+			NPC.defense = 12;
+			NPC.lifeMax = 120;
+			NPC.HitSound = SoundID.NPCHit5;
+			NPC.DeathSound = SoundID.NPCDeath6;
+			NPC.value = 300f;
+			NPC.knockBackResist = 0.75f;
+			NPC.aiStyle = 3;
 			aiType = NPCID.Skeleton;
 			animationType = NPCID.Zombie;
 		}
@@ -38,20 +38,20 @@ namespace CrystiliumMod.NPCs
 		}
 
 		// TODO: GetGoreSlot
-		//public override void HitEffect(int hitDirection, double damage)
-		//{
-		//	if (npc.life <= 0)
-		//	{
-		//		//spawn initial set
-		//		for (int i = 1; i <= 3; i++)
-		//		{
-		//			Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Zombie_Gore_" + i));
-		//		}
-		//		//spawn a couple extra bits
-		//		Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Zombie_Gore_1"));
-		//		Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Zombie_Gore_1"));
-		//	}
-		//}
+		public override void HitEffect(int hitDirection, double damage)
+		{
+			if (NPC.life <= 0)
+			{
+				//spawn initial set
+				for (int i = 1; i <= 3; i++)
+				{
+					Gore.NewGore(NPC.position, NPC.velocity, Find<ModGore>("CrystiliumMod/Crystal_Zombie_Gore_" + i).Type);
+				}
+				//spawn a couple extra bits
+				Gore.NewGore(NPC.position, NPC.velocity, Find<ModGore>("CrystiliumMod/Crystal_Zombie_Gore_1").Type);
+				Gore.NewGore(NPC.position, NPC.velocity, Find<ModGore>("CrystiliumMod/Crystal_Zombie_Gore_1").Type);
+			}
+		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
@@ -73,7 +73,7 @@ namespace CrystiliumMod.NPCs
 			{
 				multiplier = 1.5f;
 			}
-			Lighting.AddLight(npc.position, RGB.X, RGB.Y, RGB.Z);
+			Lighting.AddLight(NPC.position, RGB.X, RGB.Y, RGB.Z);
 			if (Main.rand.Next(150) == 0)
 			{
 				for (int h = 0; h < 3; h++)
@@ -97,7 +97,7 @@ namespace CrystiliumMod.NPCs
 							break;
 					}
 
-					Projectile.NewProjectile(npc.Center.X, npc.Center.Y + 20, vel.X, vel.Y, projType, 18, 0, Main.myPlayer);
+					Projectile.NewProjectile(NPC.Center.X, NPC.Center.Y + 20, vel.X, vel.Y, projType, 18, 0, Main.myPlayer);
 				}
 			}
 		}

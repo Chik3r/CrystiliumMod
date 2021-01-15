@@ -12,21 +12,21 @@ namespace CrystiliumMod.NPCs
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Crystal Slime");
-			Main.npcFrameCount[npc.type] = 2;
+			Main.npcFrameCount[NPC.type] = 2;
 		}
 
 		public override void SetDefaults()
 		{
-			npc.width = 30;
-			npc.height = 50;
-			npc.damage = 24;
-			npc.defense = 9;
-			npc.lifeMax = 130;
-			npc.HitSound = SoundID.NPCHit5;
-			npc.DeathSound = SoundID.NPCDeath6;
-			npc.value = 200f;
-			npc.knockBackResist = 0.5f;
-			npc.aiStyle = 1;
+			NPC.width = 30;
+			NPC.height = 50;
+			NPC.damage = 24;
+			NPC.defense = 9;
+			NPC.lifeMax = 130;
+			NPC.HitSound = SoundID.NPCHit5;
+			NPC.DeathSound = SoundID.NPCDeath6;
+			NPC.value = 200f;
+			NPC.knockBackResist = 0.5f;
+			NPC.aiStyle = 1;
 			aiType = 1;
 			animationType = NPCID.BlueSlime;
 		}
@@ -37,17 +37,17 @@ namespace CrystiliumMod.NPCs
 		}
 
 		// TODO: GetGoreSlot
-		//public override void HitEffect(int hitDirection, double damage)
-		//{
-		//	if (npc.life <= 0)
-		//	{
-		//		//spawn gore set
-		//		for (int i = 1; i <= 4; i++)
-		//		{
-		//			Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/Crystal_Slime_Gore_" + i));
-		//		}
-		//	}
-		//}
+		public override void HitEffect(int hitDirection, double damage)
+		{
+			if (NPC.life <= 0)
+			{
+				//spawn gore set
+				for (int i = 1; i <= 4; i++)
+				{
+					Gore.NewGore(NPC.position, NPC.velocity, Find<ModGore>("CrystiliumMod/Crystal_Slime_Gore_" + i).Type);
+				}
+			}
+		}
 
 		public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
@@ -69,7 +69,7 @@ namespace CrystiliumMod.NPCs
 			{
 				multiplier = 1.5f;
 			}
-			Lighting.AddLight(npc.position, RGB.X, RGB.Y, RGB.Z);
+			Lighting.AddLight(NPC.position, RGB.X, RGB.Y, RGB.Z);
 		}
 	}
 }

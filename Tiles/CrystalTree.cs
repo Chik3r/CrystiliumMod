@@ -25,10 +25,10 @@ namespace CrystiliumMod.Tiles
 		}
 
 		// TODO: GetGoreSlot
-		//public override int GrowthFXGore()
-		//{
-		//	return mod.GetGoreSlot("Gores/CrystalTreeFX");
-		//}
+		public override int GrowthFXGore()
+		{
+			return Find<ModGore>("CrystiliumMod/CrystalTreeFX").Type;
+		}
 
 		public override int DropWood()
 		{

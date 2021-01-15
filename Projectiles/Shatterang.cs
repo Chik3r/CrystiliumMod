@@ -14,16 +14,16 @@ namespace CrystiliumMod.Projectiles
 
 		public override void SetDefaults()
 		{
-			projectile.width = 30;
-			projectile.height = 30;
-			projectile.aiStyle = 3;
-			projectile.friendly = true;
-			projectile.DamageType = DamageClass.Ranged;
+			Projectile.width = 30;
+			Projectile.height = 30;
+			Projectile.aiStyle = 3;
+			Projectile.friendly = true;
+			Projectile.DamageType = DamageClass.Ranged;
 			//projectile.magic = false;
-			projectile.penetrate = 10;
-			projectile.timeLeft = 600;
-			projectile.light = 0.5f;
-			projectile.extraUpdates = 1;
+			Projectile.penetrate = 10;
+			Projectile.timeLeft = 600;
+			Projectile.light = 0.5f;
+			Projectile.extraUpdates = 1;
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -49,7 +49,7 @@ namespace CrystiliumMod.Projectiles
 						break;
 				}
 
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 20, vel.X, vel.Y, projType, projectile.damage / 3, 0, Main.myPlayer);
+				Projectile.NewProjectile(Projectile.Center.X, Projectile.Center.Y + 20, vel.X, vel.Y, projType, Projectile.damage / 3, 0, Main.myPlayer);
 			}
 		}
 	}

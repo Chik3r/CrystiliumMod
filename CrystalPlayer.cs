@@ -40,7 +40,7 @@ namespace CrystiliumMod
 		{
 			if (CrystalAcc)
 			{
-				SoundEngine.PlaySound(2, player.position, 27);
+				SoundEngine.PlaySound(2, Player.position, 27);
 				for (int h = 0; h < 20; h++)
 				{
 					Vector2 vel = new Vector2(0, -1);
@@ -62,7 +62,7 @@ namespace CrystiliumMod
 							break;
 					}
 
-					Projectile.NewProjectile(player.Center.X, player.Center.Y, vel.X, vel.Y, projType, 20, 0, player.whoAmI);
+					Projectile.NewProjectile(Player.Center.X, Player.Center.Y, vel.X, vel.Y, projType, 20, 0, Player.whoAmI);
 				}
 			}
 		}
@@ -101,10 +101,10 @@ namespace CrystiliumMod
 			if (crystalCharm)
 			{
 				//add buff, update stacks
-				int buffIdx = player.FindBuffIndex(BuffType<Buffs.CrystalCharm>());
+				int buffIdx = Player.FindBuffIndex(BuffType<Buffs.CrystalCharm>());
 				if (buffIdx < 0)
 				{
-					player.AddBuff(BuffType<Buffs.CrystalCharm>(), 120);
+					Player.AddBuff(BuffType<Buffs.CrystalCharm>(), 120);
 					crystalCharmStacks = 1;
 					//1/3 chance to increase stack each hit
 				}
@@ -116,7 +116,7 @@ namespace CrystiliumMod
 				//reset buff time
 				if (buffIdx > -1)
 				{
-					player.buffTime[buffIdx] = 120;
+					Player.buffTime[buffIdx] = 120;
 				}
 			}
 		}
@@ -176,7 +176,7 @@ namespace CrystiliumMod
 		{
 			if (constantDamage > 0 || percentDamage > 0f)
 			{
-				int damageFromPercent = (int)(player.statLifeMax2 * percentDamage);
+				int damageFromPercent = (int)(Player.statLifeMax2 * percentDamage);
 				damage = Math.Max(constantDamage, damageFromPercent);
 				customDamage = true;
 			}
@@ -186,7 +186,7 @@ namespace CrystiliumMod
 				{
 					defenseEffect *= 1.5f;
 				}
-				damage -= (int)(player.statDefense * defenseEffect);
+				damage -= (int)(Player.statDefense * defenseEffect);
 				if (damage < 0)
 				{
 					damage = 1;
@@ -203,13 +203,13 @@ namespace CrystiliumMod
 		{
 			if (crystalFountain)
 			{
-				player.AddBuff(BuffType<Buffs.CrystalHealing>(), 2);
+				Player.AddBuff(BuffType<Buffs.CrystalHealing>(), 2);
 			}
 		}
 
 		public override void PostUpdateBuffs()
 		{
-			if (player.FindBuffIndex(BuffType<Buffs.CrystalCharm>()) < 0)
+			if (Player.FindBuffIndex(BuffType<Buffs.CrystalCharm>()) < 0)
 			{
 				crystalCharmStacks = 0;
 			}

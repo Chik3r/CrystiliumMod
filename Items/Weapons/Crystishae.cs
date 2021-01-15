@@ -16,12 +16,12 @@ namespace CrystiliumMod.Items.Weapons
 
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.ThornChakram);
-			item.damage = 77;
-			item.DamageType = DamageClass.Throwing;
-			item.value = Item.sellPrice(0, 1, 0, 0);
-			item.rare = ItemRarityID.LightPurple;
-			item.shoot = ProjectileType<Projectiles.Crystishae>();
+			Item.CloneDefaults(ItemID.ThornChakram);
+			Item.damage = 77;
+			Item.DamageType = DamageClass.Throwing;
+			Item.value = Item.sellPrice(0, 1, 0, 0);
+			Item.rare = ItemRarityID.LightPurple;
+			Item.shoot = ProjectileType<Projectiles.Crystishae>();
 		}
 
 		public override bool CanUseItem(Player player)
@@ -29,7 +29,7 @@ namespace CrystiliumMod.Items.Weapons
 			//if any projectiles named "Crystishae" exist that are owned by this player, don't use this item
 			for (int i = 0; i < Main.projectile.Length; i++)
 			{
-				if (Main.projectile[i].active && Main.projectile[i].type == item.shoot && Main.projectile[i].owner == player.whoAmI)
+				if (Main.projectile[i].active && Main.projectile[i].type == Item.shoot && Main.projectile[i].owner == player.whoAmI)
 					return false;
 			}
 

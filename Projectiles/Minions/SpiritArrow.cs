@@ -11,22 +11,22 @@ namespace CrystiliumMod.Projectiles.Minions
 	{
 		public override void SetStaticDefaults()
 		{
-			ProjectileID.Sets.MinionShot[projectile.type] = true;
+			ProjectileID.Sets.MinionShot[Projectile.type] = true;
 		}
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.WoodenArrowFriendly);
+			Projectile.CloneDefaults(ProjectileID.WoodenArrowFriendly);
 			//projectile.ranged = false;
-			projectile.DamageType = DamageClass.Summon;
-			projectile.damage = 105;
-			projectile.width = 10;
-			projectile.penetrate = 5;
-			projectile.height = 20;
+			Projectile.DamageType = DamageClass.Summon;
+			Projectile.damage = 105;
+			Projectile.width = 10;
+			Projectile.penetrate = 5;
+			Projectile.height = 20;
 		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
-			SoundEngine.PlaySound(0, projectile.Center);
+			SoundEngine.PlaySound(0, Projectile.Center);
 			return base.OnTileCollide(oldVelocity);
 		}
 	}

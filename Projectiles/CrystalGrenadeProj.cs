@@ -18,15 +18,15 @@ namespace CrystiliumMod.Projectiles
 
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.Grenade);
-			projectile.timeLeft = 120;
-			projectile.width = 26;
-			projectile.height = 28;
+			Projectile.CloneDefaults(ProjectileID.Grenade);
+			Projectile.timeLeft = 120;
+			Projectile.width = 26;
+			Projectile.height = 28;
 		}
 
 		public override void Kill(int timeLeft)
 		{
-			SoundEngine.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27);
+			SoundEngine.PlaySound(2, (int)Projectile.position.X, (int)Projectile.position.Y, 27);
 			for (int h = 0; h < 25; h++)
 			{
 				Vector2 vel = new Vector2(0, -1);
@@ -48,7 +48,7 @@ namespace CrystiliumMod.Projectiles
 						break;
 				}
 
-				int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 20, vel.X, vel.Y, projType, (int)(projectile.damage * .425), 0, Main.myPlayer);
+				int proj = Projectile.NewProjectile(Projectile.Center.X, Projectile.Center.Y + 20, vel.X, vel.Y, projType, (int)(Projectile.damage * .425), 0, Main.myPlayer);
 				Main.projectile[proj].friendly = true;
 				Main.projectile[proj].hostile = true;
 			}

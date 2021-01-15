@@ -17,12 +17,12 @@ namespace CrystiliumMod.Items.Accessories
 
 		public override void SetDefaults()
 		{
-			item.width = 40;
-			item.height = 40;
-			item.value = 30000;
-			item.rare = ItemRarityID.Orange;
-			item.defense = 3;
-			item.accessory = true;
+			Item.width = 40;
+			Item.height = 40;
+			Item.value = 30000;
+			Item.rare = ItemRarityID.Orange;
+			Item.defense = 3;
+			Item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

@@ -9,18 +9,18 @@ namespace CrystiliumMod.Sounds
 	public class Thunder : ModSoundStyle
 	{
 		// TODO: Mystery magic, check if it works
-		public override SoundEffectInstance Play(Vector2? position, float volumeScale = 1)
+		public override SoundEffectInstance Play(Vector2? position)
 		{
-			var instance = base.Play(position, volumeScale);
+			var instance = base.Play(position);
 			if (position.HasValue)
 			{
-				CalculateVolumeAndPan(position.Value, 800, out volumeScale, out float pan);
+				CalculateVolumeAndPan(position.Value, 800, out float volumeScale, out float pan);
 				instance.Volume = volumeScale * .5f;
 				instance.Pan = pan;
 				instance.Pitch = Main.rand.Next(-6, 7) / 30f;
 			}
 
-			return instance;
+			return base.Play(position);
 		}
 
 		//public override SoundEffectInstance PlaySound(ref SoundEffectInstance soundInstance, float volume, float pan, SoundType type)

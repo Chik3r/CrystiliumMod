@@ -13,27 +13,27 @@ namespace CrystiliumMod.Items.Weapons
 		{
 			DisplayName.SetDefault("Ultimate Gem Staff");
 			Tooltip.SetDefault("'Ultimate gemstone power'");
-			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
+			Item.staff[Item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 96;
-			item.DamageType = DamageClass.Magic;
-			item.mana = 3;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 22;
-			item.useAnimation = 22;
-			item.useStyle = ItemUseStyleID.Shoot;
-			item.noMelee = true;
-			item.knockBack = 5;
-			item.value = 100000;
-			item.rare = ItemRarityID.Yellow;
-			item.UseSound = SoundID.Item20;
-			item.autoReuse = true;
-			item.shoot = ProjectileType<AmberDagger>();
-			item.shootSpeed = 10f;
+			Item.damage = 96;
+			Item.DamageType = DamageClass.Magic;
+			Item.mana = 3;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 22;
+			Item.useAnimation = 22;
+			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.noMelee = true;
+			Item.knockBack = 5;
+			Item.value = 100000;
+			Item.rare = ItemRarityID.Yellow;
+			Item.UseSound = SoundID.Item20;
+			Item.autoReuse = true;
+			Item.shoot = ProjectileType<AmberDagger>();
+			Item.shootSpeed = 10f;
 		}
 
 		public override void AddRecipes()

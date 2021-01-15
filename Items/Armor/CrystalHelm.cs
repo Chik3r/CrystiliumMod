@@ -18,11 +18,11 @@ namespace CrystiliumMod.Items.Armor
 
 		public override void SetDefaults()
 		{
-			item.width = 18;
-			item.height = 18;
-			item.value = 15000;
-			item.rare = ItemRarityID.Orange;
-			item.defense = 3;
+			Item.width = 18;
+			Item.height = 18;
+			Item.value = 15000;
+			Item.rare = ItemRarityID.Orange;
+			Item.defense = 3;
 		}
 
 		public override void UpdateEquip(Player player)

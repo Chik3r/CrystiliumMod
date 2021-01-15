@@ -12,27 +12,27 @@ namespace CrystiliumMod.Items.Weapons
 		{
 			DisplayName.SetDefault("Enchanted amethyst staff");
 			Tooltip.SetDefault("'Made with shadow magic'");
-			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
+			Item.staff[Item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 18;
-			item.DamageType = DamageClass.Magic;
-			item.mana = 11;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 35;
-			item.useAnimation = 35;
-			item.useStyle = ItemUseStyleID.Shoot;
-			item.noMelee = true;
-			item.knockBack = 5;
-			item.value = 30000;
-			item.rare = ItemRarityID.Orange;
-			item.UseSound = SoundID.Item20;
-			item.autoReuse = true;
-			item.shoot = ProjectileType<Projectiles.TrueAmethystProjectile>();
-			item.shootSpeed = 1f;
+			Item.damage = 18;
+			Item.DamageType = DamageClass.Magic;
+			Item.mana = 11;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 35;
+			Item.useAnimation = 35;
+			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.noMelee = true;
+			Item.knockBack = 5;
+			Item.value = 30000;
+			Item.rare = ItemRarityID.Orange;
+			Item.UseSound = SoundID.Item20;
+			Item.autoReuse = true;
+			Item.shoot = ProjectileType<Projectiles.TrueAmethystProjectile>();
+			Item.shootSpeed = 1f;
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

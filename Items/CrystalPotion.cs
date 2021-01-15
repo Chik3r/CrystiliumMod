@@ -14,17 +14,17 @@ namespace CrystiliumMod.Items
 
 		public override void SetDefaults()
 		{
-			item.UseSound = SoundID.Item3;
-			item.useStyle = 2;
-			item.useTurn = true;
-			item.useAnimation = 17;
-			item.useTime = 17;
-			item.maxStack = 30;
-			item.consumable = true;
-			item.value = 3000;
-			item.rare = 0;
-			item.buffType = BuffType<Buffs.CrystalLeak>();
-			item.buffTime = 10000;
+			Item.UseSound = SoundID.Item3;
+			Item.useStyle = 2;
+			Item.useTurn = true;
+			Item.useAnimation = 17;
+			Item.useTime = 17;
+			Item.maxStack = 30;
+			Item.consumable = true;
+			Item.value = 3000;
+			Item.rare = 0;
+			Item.buffType = BuffType<Buffs.CrystalLeak>();
+			Item.buffTime = 10000;
 			return;
 		}
 

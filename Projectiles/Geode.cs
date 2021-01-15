@@ -10,14 +10,14 @@ namespace CrystiliumMod.Projectiles
 	{
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.WoodYoyo);
-			projectile.penetrate = 2;
-			projectile.timeLeft = 600;
+			Projectile.CloneDefaults(ProjectileID.WoodYoyo);
+			Projectile.penetrate = 2;
+			Projectile.timeLeft = 600;
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (projectile.penetrate <= 1)
+			if (Projectile.penetrate <= 1)
 			{
 				for (int h = 0; h < 15; h++)
 				{
@@ -40,7 +40,7 @@ namespace CrystiliumMod.Projectiles
 							break;
 					}
 
-					Projectile.NewProjectile((projectile.Center.X - 30) + Main.rand.Next(60), (projectile.Center.Y - 30) + Main.rand.Next(60), vel.X, vel.Y, projType, projectile.damage - 8, 0, Main.myPlayer);
+					Projectile.NewProjectile((Projectile.Center.X - 30) + Main.rand.Next(60), (Projectile.Center.Y - 30) + Main.rand.Next(60), vel.X, vel.Y, projType, Projectile.damage - 8, 0, Main.myPlayer);
 				}
 			}
 		}

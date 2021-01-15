@@ -13,11 +13,11 @@ namespace CrystiliumMod.Items
 
 		public override void SetDefaults()
 		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 30;
-			item.value = 2500;
-			item.rare = 3;
+			Item.width = 20;
+			Item.height = 20;
+			Item.maxStack = 30;
+			Item.value = 2500;
+			Item.rare = 3;
 		}
 
 		public override void AddRecipes()

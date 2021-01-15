@@ -16,15 +16,15 @@ namespace CrystiliumMod.Projectiles
 
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.WoodenArrowFriendly);
-			projectile.penetrate = 5;
-			projectile.width = 13;
-			projectile.height = 46;
+			Projectile.CloneDefaults(ProjectileID.WoodenArrowFriendly);
+			Projectile.penetrate = 5;
+			Projectile.width = 13;
+			Projectile.height = 46;
 		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
-			SoundEngine.PlaySound(0, projectile.Center);
+			SoundEngine.PlaySound(0, Projectile.Center);
 			return base.OnTileCollide(oldVelocity);
 		}
 	}

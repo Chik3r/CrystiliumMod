@@ -17,20 +17,20 @@ namespace CrystiliumMod.Items.Weapons
 
 		public override void SetDefaults()
 		{
-			item.damage = 54;
-			item.DamageType = DamageClass.Melee;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 25;
-			item.useAnimation = 25;
-			item.useStyle = 1;
-			item.knockBack = 6;
-			item.value = 80000;
-			item.rare = 8;
-			item.UseSound = SoundID.Item1;
-			item.shoot = ProjectileType<QuartzTrident>();
-			item.shootSpeed = 6f;
-			item.autoReuse = true;
+			Item.damage = 54;
+			Item.DamageType = DamageClass.Melee;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 25;
+			Item.useAnimation = 25;
+			Item.useStyle = 1;
+			Item.knockBack = 6;
+			Item.value = 80000;
+			Item.rare = 8;
+			Item.UseSound = SoundID.Item1;
+			Item.shoot = ProjectileType<QuartzTrident>();
+			Item.shootSpeed = 6f;
+			Item.autoReuse = true;
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -41,9 +41,9 @@ namespace CrystiliumMod.Items.Weapons
 			Vector2 newVect2 = origVect.RotatedBy(-System.Math.PI / 20);
 
 			//create three Crystishae projectiles
-			Projectile.NewProjectile(player.Center.X, player.Center.Y - 20, speedX, speedY, ProjectileType<QuartzTrident>(), damage, knockBack, item.playerIndexTheItemIsReservedFor, 0, 0);
-			Projectile.NewProjectile(player.Center.X, player.Center.Y - 20, newVect.X, newVect.Y, ProjectileType<QuartzTrident>(), damage, knockBack, item.playerIndexTheItemIsReservedFor, 0, 0);
-			Projectile.NewProjectile(player.Center.X, player.Center.Y - 20, newVect2.X, newVect2.Y, ProjectileType<QuartzTrident>(), damage, knockBack, item.playerIndexTheItemIsReservedFor, 0, 0);
+			Projectile.NewProjectile(player.Center.X, player.Center.Y - 20, speedX, speedY, ProjectileType<QuartzTrident>(), damage, knockBack, Item.playerIndexTheItemIsReservedFor, 0, 0);
+			Projectile.NewProjectile(player.Center.X, player.Center.Y - 20, newVect.X, newVect.Y, ProjectileType<QuartzTrident>(), damage, knockBack, Item.playerIndexTheItemIsReservedFor, 0, 0);
+			Projectile.NewProjectile(player.Center.X, player.Center.Y - 20, newVect2.X, newVect2.Y, ProjectileType<QuartzTrident>(), damage, knockBack, Item.playerIndexTheItemIsReservedFor, 0, 0);
 			return false;
 		}
 

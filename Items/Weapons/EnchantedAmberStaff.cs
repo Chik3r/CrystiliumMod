@@ -14,27 +14,27 @@ namespace CrystiliumMod.Items.Weapons
 		{
 			DisplayName.SetDefault("Enchanted Amber Staff");
 			Tooltip.SetDefault("Creates sharp daggers");
-			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
+			Item.staff[Item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 17;
-			item.DamageType = DamageClass.Magic;
-			item.mana = 9;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 20;
-			item.useAnimation = 20;
-			item.useStyle = ItemUseStyleID.Shoot;
-			item.noMelee = true;
-			item.knockBack = 5;
-			item.value = 30000;
-			item.rare = ItemRarityID.Orange;
-			item.UseSound = SoundID.Item20;
-			item.autoReuse = true;
-			item.shoot = ProjectileType<AmberDagger>();
-			item.shootSpeed = 8f;
+			Item.damage = 17;
+			Item.DamageType = DamageClass.Magic;
+			Item.mana = 9;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 20;
+			Item.useAnimation = 20;
+			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.noMelee = true;
+			Item.knockBack = 5;
+			Item.value = 30000;
+			Item.rare = ItemRarityID.Orange;
+			Item.UseSound = SoundID.Item20;
+			Item.autoReuse = true;
+			Item.shoot = ProjectileType<AmberDagger>();
+			Item.shootSpeed = 8f;
 		}
 
 		public override void AddRecipes()

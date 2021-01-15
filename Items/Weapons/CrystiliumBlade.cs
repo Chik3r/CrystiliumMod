@@ -17,20 +17,20 @@ namespace CrystiliumMod.Items.Weapons
 
 		public override void SetDefaults()
 		{
-			item.damage = 138;
-			item.DamageType = DamageClass.Melee;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 30;
-			item.useAnimation = 30;
-			item.useStyle = ItemUseStyleID.Swing;
-			item.knockBack = 6;
-			item.value = 80000;
-			item.rare = ItemRarityID.Yellow;
-			item.UseSound = SoundID.Item1;
-			item.shoot = ProjectileType<CrystiliumBladeProj>();
-			item.shootSpeed = 6f;
-			item.autoReuse = true;
+			Item.damage = 138;
+			Item.DamageType = DamageClass.Melee;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 30;
+			Item.useAnimation = 30;
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.knockBack = 6;
+			Item.value = 80000;
+			Item.rare = ItemRarityID.Yellow;
+			Item.UseSound = SoundID.Item1;
+			Item.shoot = ProjectileType<CrystiliumBladeProj>();
+			Item.shootSpeed = 6f;
+			Item.autoReuse = true;
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

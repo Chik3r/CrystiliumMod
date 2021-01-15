@@ -11,21 +11,21 @@ namespace CrystiliumMod.NPCs
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Crystal Mimic");
-			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.BigMimicHallow];
+			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.BigMimicHallow];
 		}
 
 		public override void SetDefaults()
 		{
-			npc.width = 17;
-			npc.height = 21;
-			npc.damage = 49;
-			npc.defense = 8;
-			npc.lifeMax = 5000;
-			npc.HitSound = SoundID.NPCHit5;
-			npc.DeathSound = SoundID.NPCDeath6;
-			npc.value = 20000f;
-			npc.knockBackResist = .30f;
-			npc.aiStyle = 87;
+			NPC.width = 17;
+			NPC.height = 21;
+			NPC.damage = 49;
+			NPC.defense = 8;
+			NPC.lifeMax = 5000;
+			NPC.HitSound = SoundID.NPCHit5;
+			NPC.DeathSound = SoundID.NPCDeath6;
+			NPC.value = 20000f;
+			NPC.knockBackResist = .30f;
+			NPC.aiStyle = 87;
 			aiType = NPCID.Zombie;
 			animationType = NPCID.BigMimicHallow;
 		}

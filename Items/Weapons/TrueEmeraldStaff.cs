@@ -12,27 +12,27 @@ namespace CrystiliumMod.Items.Weapons
 		{
 			DisplayName.SetDefault("True Emerald staff");
 			Tooltip.SetDefault("'Blow all your enemies away'");
-			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
+			Item.staff[Item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 65;
-			item.DamageType = DamageClass.Magic;
-			item.mana = 9;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 7;
-			item.useAnimation = 7;
-			item.useStyle = ItemUseStyleID.Shoot;
-			item.noMelee = true;
-			item.knockBack = 5;
-			item.value = 120000; //How much the item is worth
-			item.rare = ItemRarityID.Yellow; //The rarity of the item
-			item.UseSound = SoundID.Item20;
-			item.autoReuse = true;
-			item.shoot = ProjectileType<Projectiles.AmberDagger>();
-			item.shootSpeed = 8f;
+			Item.damage = 65;
+			Item.DamageType = DamageClass.Magic;
+			Item.mana = 9;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 7;
+			Item.useAnimation = 7;
+			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.noMelee = true;
+			Item.knockBack = 5;
+			Item.value = 120000; //How much the item is worth
+			Item.rare = ItemRarityID.Yellow; //The rarity of the item
+			Item.UseSound = SoundID.Item20;
+			Item.autoReuse = true;
+			Item.shoot = ProjectileType<Projectiles.AmberDagger>();
+			Item.shootSpeed = 8f;
 		}
 
 		public override void AddRecipes()

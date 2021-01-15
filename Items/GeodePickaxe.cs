@@ -13,19 +13,19 @@ namespace CrystiliumMod.Items
 
 		public override void SetDefaults()
 		{
-			item.damage = 30;
-			item.DamageType = DamageClass.Melee;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 13;
-			item.useAnimation = 13;
-			item.pick = 150;
-			item.useStyle = 1;
-			item.knockBack = 6;
-			item.value = 20000;
-			item.rare = 4;
-			item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
+			Item.damage = 30;
+			Item.DamageType = DamageClass.Melee;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 13;
+			Item.useAnimation = 13;
+			Item.pick = 150;
+			Item.useStyle = 1;
+			Item.knockBack = 6;
+			Item.value = 20000;
+			Item.rare = 4;
+			Item.UseSound = SoundID.Item1;
+			Item.autoReuse = true;
 		}
 
 		public override void AddRecipes()

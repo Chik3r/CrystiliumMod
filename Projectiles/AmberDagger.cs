@@ -11,22 +11,22 @@ namespace CrystiliumMod.Projectiles
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Amber Dagger");
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 9;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9;
+			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.width = 7;
-			projectile.height = 14;
-			projectile.aiStyle = 113;
-			projectile.friendly = true;
-			projectile.DamageType = DamageClass.Throwing;
-			projectile.penetrate = 2;
-			projectile.timeLeft = 600;
-			projectile.alpha = 255;
-			projectile.extraUpdates = 1;
-			projectile.light = 0;
+			Projectile.width = 7;
+			Projectile.height = 14;
+			Projectile.aiStyle = 113;
+			Projectile.friendly = true;
+			Projectile.DamageType = DamageClass.Throwing;
+			Projectile.penetrate = 2;
+			Projectile.timeLeft = 600;
+			Projectile.alpha = 255;
+			Projectile.extraUpdates = 1;
+			Projectile.light = 0;
 			aiType = ProjectileID.ThrowingKnife;
 		}
 
@@ -39,9 +39,9 @@ namespace CrystiliumMod.Projectiles
 		{
 			for (int i = 0; i < 5; i++)
 			{
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, 6);
+				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 6);
 			}
-			SoundEngine.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
+			SoundEngine.PlaySound(0, (int)Projectile.position.X, (int)Projectile.position.Y);
 		}
 
 		//public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
