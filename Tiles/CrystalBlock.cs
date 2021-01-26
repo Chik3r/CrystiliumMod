@@ -15,10 +15,10 @@ namespace CrystiliumMod.Tiles
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = false;
 			SetModTree(new CrystalTree());
-			dustType = DustType<Dusts.Sparkle>();
-			soundType = 27;
-			soundStyle = 2;
-			drop = ItemType<Items.Placeable.CrystalBlock>();
+			DustType = DustType<Dusts.Sparkle>();
+			SoundType = 27;
+			SoundStyle = 2;
+			ItemDrop = ItemType<Items.Placeable.CrystalBlock>();
 			AddMapEntry(new Color(19, 163, 189));
 		}
 

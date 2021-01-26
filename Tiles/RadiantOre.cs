@@ -13,10 +13,10 @@ namespace CrystiliumMod.Tiles
 			Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = true;
-			this.minPick = 65;
+			MinPick = 65;
 			Main.tileLighted[Type] = false;
-			dustType = DustType<Dusts.Sparkle>();
-			drop = ItemType<Items.Placeable.RadiantOre>();
+			DustType = DustType<Dusts.Sparkle>();
+			ItemDrop = ItemType<Items.Placeable.RadiantOre>();
 			AddMapEntry(new Color(255, 93, 245));
 		}
 

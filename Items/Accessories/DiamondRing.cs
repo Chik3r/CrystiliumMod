@@ -31,10 +31,10 @@ namespace CrystiliumMod.Items.Accessories
 		{
 			if (item.type == ItemID.DiamondRing)
 			{
-				player.GetCrit(DamageClass.Magic) += 5;
-				player.GetCrit(DamageClass.Melee) += 5;
-				player.GetCrit(DamageClass.Throwing) += 5;
-				player.GetCrit(DamageClass.Ranged) += 5;
+				player.GetCritChance(DamageClass.Magic) += 5;
+				player.GetCritChance(DamageClass.Melee) += 5;
+				player.GetCritChance(DamageClass.Throwing) += 5;
+				player.GetCritChance(DamageClass.Ranged) += 5;
 			}
 		}
 	}

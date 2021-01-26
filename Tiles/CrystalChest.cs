@@ -39,9 +39,9 @@ namespace CrystiliumMod.Tiles
 			name = CreateMapEntryName(Name + "_Locked");
 			name.SetDefault("Locked Crystal Chest");
 			AddMapEntry(new Color(124, 83, 166), name, MapChestName);
-			dustType = DustType<Dusts.Sparkle>();
+			DustType = DustType<Dusts.Sparkle>();
 			TileID.Sets.DisableSmartCursor[Type] = true;
-			adjTiles = new int[] { TileID.Containers };
+			AdjTiles = new int[] { TileID.Containers };
 			//chest = "Crystal Chest";
 			TileID.Sets.BasicChest[Type] = true;
 			ContainerName.SetDefault("Crystal Chest");

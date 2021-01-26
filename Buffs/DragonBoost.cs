@@ -17,7 +17,7 @@ namespace CrystiliumMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			player.allDamage *= 4;
+			player.GetDamage(DamageClass.Generic) *= 4;
 			//player.thrownDamage *= 4;
 			//player.magicDamage *= 4;
 			//player.minionDamage *= 4;

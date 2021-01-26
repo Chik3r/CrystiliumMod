@@ -61,10 +61,10 @@ namespace CrystiliumMod.Tiles
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("CrystalWood Door");
 			AddMapEntry(new Color(250, 140, 250), name);
-			dustType = DustType<Dusts.CrystalDust>();
+			DustType = DustType<Dusts.CrystalDust>();
 			TileID.Sets.DisableSmartCursor[Type] = true;
-			adjTiles = new int[] { TileID.OpenDoor };
-			closeDoorID = TileType<Tiles.CrystalWoodDoorClosed>();
+			AdjTiles = new int[] { TileID.OpenDoor };
+			CloseDoorID = TileType<Tiles.CrystalWoodDoorClosed>();
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)

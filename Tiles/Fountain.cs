@@ -19,7 +19,7 @@ namespace CrystiliumMod.Tiles
 			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
-			minPick = 999;
+			MinPick = 999;
 			TileObjectData.newTile.Height = 6;
 			TileObjectData.newTile.Width = 6;
 			TileObjectData.newTile.Origin = new Point16(0, 0);
@@ -30,7 +30,7 @@ namespace CrystiliumMod.Tiles
 			TileObjectData.newTile.CoordinateWidth = 16;
 			TileObjectData.newTile.CoordinatePadding = 2;
 			TileObjectData.addTile(Type);
-			animationFrameHeight = 108;
+			AnimationFrameHeight = 108;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Crystal Fountain");
 			AddMapEntry(new Color(200, 200, 200), name);
