@@ -29,8 +29,8 @@ namespace CrystiliumMod.Items.Accessories
 		{
 			player.GetDamage(DamageClass.Magic) *= 1.1f;
 			player.GetDamage(DamageClass.Ranged) *= 1.1f;
-			player.GetCrit(DamageClass.Magic) += 10;
-			player.GetCrit(DamageClass.Ranged) += 10;
+			player.GetCritChance(DamageClass.Magic) += 10;
+			player.GetCritChance(DamageClass.Ranged) += 10;
 		}
 	}
 }

@@ -38,8 +38,8 @@ namespace CrystiliumMod.Tiles
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Sapling");
 			AddMapEntry(new Color(200, 200, 200), name);
-			dustType = DustType<Dusts.Sparkle>();
-			adjTiles = new int[] { TileID.Saplings };
+			DustType = DustType<Dusts.Sparkle>();
+			AdjTiles = new int[] { TileID.Saplings };
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)

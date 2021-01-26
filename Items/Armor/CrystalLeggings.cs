@@ -27,7 +27,7 @@ namespace CrystiliumMod.Items.Armor
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetCrit(DamageClass.Magic) += 7;
+			player.GetCritChance(DamageClass.Magic) += 7;
 			player.maxMinions += 1;
 		}
 

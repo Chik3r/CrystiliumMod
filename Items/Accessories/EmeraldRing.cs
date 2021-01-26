@@ -24,7 +24,7 @@ namespace CrystiliumMod.Items.Accessories
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.allDamage += .05f;
+			player.GetDamage(DamageClass.Generic) += .05f;
 		}
 
 		public override void AddRecipes()

@@ -38,11 +38,11 @@ namespace CrystiliumMod.Tiles
 			//ModTranslation name = CreateMapEntryName();
 			//name.SetDefault("Torch");
 			//AddMapEntry(new Color(200, 200, 200), name);
-			dustType = DustType<Dusts.Sparkle>();
+			DustType = DustType<Dusts.Sparkle>();
 			// TODO: Check if correct way of porting smart cursor
 			//disableSmartCursor = true;
 			TileID.Sets.DisableSmartCursor[Type] = true;
-			adjTiles = new int[] { TileID.Torches };
+			AdjTiles = new int[] { TileID.Torches };
 			// TODO: Check if correct way of porting torches
 			//torch = true;
 			TileID.Sets.Torch[Type] = true;

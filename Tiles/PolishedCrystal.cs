@@ -14,8 +14,8 @@ namespace CrystiliumMod.Tiles
 			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = false;
-			dustType = DustType<Dusts.Sparkle>();
-			drop = ItemType<Items.Placeable.PolishedCrystal>();
+			DustType = DustType<Dusts.Sparkle>();
+			ItemDrop = ItemType<Items.Placeable.PolishedCrystal>();
 			AddMapEntry(new Color(19, 163, 189));
 		}
 

@@ -18,7 +18,7 @@ namespace CrystiliumMod.Tiles
 			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
-			this.minPick = 15;
+			MinPick = 15;
 			TileObjectData.newTile.Height = 6;
 			TileObjectData.newTile.Width = 6;
 			TileObjectData.newTile.Origin = new Point16(3, 4); // Todo: make less annoying.
@@ -29,7 +29,7 @@ namespace CrystiliumMod.Tiles
 			TileObjectData.newTile.CoordinateWidth = 16;
 			TileObjectData.newTile.CoordinatePadding = 2;
 			TileObjectData.addTile(Type);
-			animationFrameHeight = 108;
+			AnimationFrameHeight = 108;
 			AddMapEntry(new Color(200, 200, 200));
 		}
 

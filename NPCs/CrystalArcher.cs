@@ -1,4 +1,5 @@
 using CrystiliumMod.Projectiles;
+using CrystiliumMod.Utilities;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -282,7 +283,7 @@ namespace CrystiliumMod.NPCs
 					{
 						return;
 					}
-					if (Main.tile[num204, num201].nactive() && Main.tileSolid[(int)Main.tile[num204, num201].type])
+					if (Main.tile[num204, num201].IsActive && Main.tileSolid[(int)Main.tile[num204, num201].type])
 					{
 						flag24 = true;
 						break;
@@ -329,14 +330,14 @@ namespace CrystiliumMod.NPCs
 				{
 					Main.tile[tileX - direction, tileY - 3] = new Tile();
 				}
-				if ((float)(tileX * 16) < position2.X + (float)NPC.width && (float)(tileX * 16 + 16) > position2.X && ((Main.tile[tileX, tileY].nactive() && !Main.tile[tileX, tileY].topSlope() && !Main.tile[tileX, tileY - 1].topSlope() && Main.tileSolid[(int)Main.tile[tileX, tileY].type] && !Main.tileSolidTop[(int)Main.tile[tileX, tileY].type]) || (Main.tile[tileX, tileY - 1].halfBrick() && Main.tile[tileX, tileY - 1].nactive())) && (!Main.tile[tileX, tileY - 1].nactive() || !Main.tileSolid[(int)Main.tile[tileX, tileY - 1].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 1].type] || (Main.tile[tileX, tileY - 1].halfBrick() && (!Main.tile[tileX, tileY - 4].nactive() || !Main.tileSolid[(int)Main.tile[tileX, tileY - 4].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 4].type]))) && (!Main.tile[tileX, tileY - 2].nactive() || !Main.tileSolid[(int)Main.tile[tileX, tileY - 2].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 2].type]) && (!Main.tile[tileX, tileY - 3].nactive() || !Main.tileSolid[(int)Main.tile[tileX, tileY - 3].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 3].type]) && (!Main.tile[tileX - direction, tileY - 3].nactive() || !Main.tileSolid[(int)Main.tile[tileX - direction, tileY - 3].type]))
+				if ((float)(tileX * 16) < position2.X + (float)NPC.width && (float)(tileX * 16 + 16) > position2.X && ((Main.tile[tileX, tileY].IsActive && !Main.tile[tileX, tileY].IsTopSlope() && !Main.tile[tileX, tileY - 1].IsTopSlope() && Main.tileSolid[(int)Main.tile[tileX, tileY].type] && !Main.tileSolidTop[(int)Main.tile[tileX, tileY].type]) || (Main.tile[tileX, tileY - 1].IsHalfBrick && Main.tile[tileX, tileY - 1].IsActive)) && (!Main.tile[tileX, tileY - 1].IsActive || !Main.tileSolid[(int)Main.tile[tileX, tileY - 1].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 1].type] || (Main.tile[tileX, tileY - 1].IsHalfBrick && (!Main.tile[tileX, tileY - 4].IsActive || !Main.tileSolid[(int)Main.tile[tileX, tileY - 4].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 4].type]))) && (!Main.tile[tileX, tileY - 2].IsActive || !Main.tileSolid[(int)Main.tile[tileX, tileY - 2].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 2].type]) && (!Main.tile[tileX, tileY - 3].IsActive || !Main.tileSolid[(int)Main.tile[tileX, tileY - 3].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 3].type]) && (!Main.tile[tileX - direction, tileY - 3].IsActive || !Main.tileSolid[(int)Main.tile[tileX - direction, tileY - 3].type]))
 				{
 					float num208 = (float)(tileY * 16);
-					if (Main.tile[tileX, tileY].halfBrick())
+					if (Main.tile[tileX, tileY].IsHalfBrick)
 					{
 						num208 += 8f;
 					}
-					if (Main.tile[tileX, tileY - 1].halfBrick())
+					if (Main.tile[tileX, tileY - 1].IsHalfBrick)
 					{
 						num208 -= 8f;
 					}
@@ -396,13 +397,13 @@ namespace CrystiliumMod.NPCs
 				{
 					Main.tile[tileX - NPC.direction, tileY + 1] = new Tile();
 				}
-				Main.tile[tileX, tileY + 1].halfBrick();
+				//Main.tile[tileX, tileY + 1].IsHalfBrick;
 				int spriteDirection = NPC.spriteDirection;
 				if ((NPC.velocity.X < 0f && spriteDirection == -1) || (NPC.velocity.X > 0f && spriteDirection == 1))
 				{
-					if (NPC.height >= 32 && Main.tile[tileX, tileY - 2].nactive() && Main.tileSolid[(int)Main.tile[tileX, tileY - 2].type])
+					if (NPC.height >= 32 && Main.tile[tileX, tileY - 2].IsActive && Main.tileSolid[(int)Main.tile[tileX, tileY - 2].type])
 					{
-						if (Main.tile[tileX, tileY - 3].nactive() && Main.tileSolid[(int)Main.tile[tileX, tileY - 3].type])
+						if (Main.tile[tileX, tileY - 3].IsActive && Main.tileSolid[(int)Main.tile[tileX, tileY - 3].type])
 						{
 							NPC.velocity.Y = -8f;
 							NPC.netUpdate = true;
@@ -413,17 +414,17 @@ namespace CrystiliumMod.NPCs
 							NPC.netUpdate = true;
 						}
 					}
-					else if (Main.tile[tileX, tileY - 1].nactive() && Main.tileSolid[(int)Main.tile[tileX, tileY - 1].type])
+					else if (Main.tile[tileX, tileY - 1].IsActive && Main.tileSolid[(int)Main.tile[tileX, tileY - 1].type])
 					{
 						NPC.velocity.Y = -6f;
 						NPC.netUpdate = true;
 					}
-					else if (NPC.position.Y + (float)NPC.height - (float)(tileY * 16) > 20f && Main.tile[tileX, tileY].nactive() && !Main.tile[tileX, tileY].topSlope() && Main.tileSolid[(int)Main.tile[tileX, tileY].type])
+					else if (NPC.position.Y + (float)NPC.height - (float)(tileY * 16) > 20f && Main.tile[tileX, tileY].IsActive && !Main.tile[tileX, tileY].IsTopSlope() && Main.tileSolid[(int)Main.tile[tileX, tileY].type])
 					{
 						NPC.velocity.Y = -5f;
 						NPC.netUpdate = true;
 					}
-					else if (NPC.directionY < 0 && (!Main.tile[tileX, tileY + 1].nactive() || !Main.tileSolid[(int)Main.tile[tileX, tileY + 1].type]) && (!Main.tile[tileX + NPC.direction, tileY + 1].nactive() || !Main.tileSolid[(int)Main.tile[tileX + NPC.direction, tileY + 1].type]))
+					else if (NPC.directionY < 0 && (!Main.tile[tileX, tileY + 1].IsActive || !Main.tileSolid[(int)Main.tile[tileX, tileY + 1].type]) && (!Main.tile[tileX + NPC.direction, tileY + 1].IsActive || !Main.tileSolid[(int)Main.tile[tileX + NPC.direction, tileY + 1].type]))
 					{
 						NPC.velocity.Y = -8f;
 						NPC.velocity.X = NPC.velocity.X * 1.5f;

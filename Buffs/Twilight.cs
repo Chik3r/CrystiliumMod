@@ -19,7 +19,7 @@ namespace CrystiliumMod.Buffs
 		{
 			if (Main.dayTime == false)
 			{
-				player.allDamage *= 1.07f;
+				player.GetDamage(DamageClass.Generic) *= 1.07f;
 			}
 		}
 	}

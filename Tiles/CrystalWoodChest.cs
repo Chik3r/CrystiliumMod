@@ -37,14 +37,14 @@ namespace CrystiliumMod.Tiles
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("CrystalWood Chest");
 			AddMapEntry(new Color(250, 140, 250), name, MapChestName);
-			dustType = DustType<CrystalDust>();
+			DustType = DustType<CrystalDust>();
 			TileID.Sets.DisableSmartCursor[Type] = true;
-			adjTiles = new int[] { TileID.Containers };
+			AdjTiles = new int[] { TileID.Containers };
 			// TODO: Check how to port chests
 			// chest = "CrystalWood Chest";
 			TileID.Sets.BasicChest[Type] = true;
 			ContainerName.SetDefault("CrystalWood Chest");
-			chestDrop = ItemType<Items.Placeable.CrystalWoodChest>();
+			ChestDrop = ItemType<Items.Placeable.CrystalWoodChest>();
 		}
 
 		public string MapChestName(string name, int i, int j)
@@ -78,7 +78,7 @@ namespace CrystiliumMod.Tiles
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(i * 16, j * 16, 32, 32, chestDrop);
+			Item.NewItem(i * 16, j * 16, 32, 32, ChestDrop);
 			Chest.DestroyChest(i, j);
 		}
 

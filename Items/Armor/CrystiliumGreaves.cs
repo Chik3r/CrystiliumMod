@@ -26,7 +26,7 @@ namespace CrystiliumMod.Items.Armor
 
 		public override void UpdateEquip(Player player)
 		{
-			player.GetCrit(DamageClass.Magic) += 9;
+			player.GetCritChance(DamageClass.Magic) += 9;
 		}
 
 		public override void AddRecipes()

@@ -38,9 +38,9 @@ namespace CrystiliumMod.Tiles
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Torch");
 			AddMapEntry(new Color(250, 140, 250), name);
-			drop = ItemType<Items.Placeable.CrystalWoodTorch>();
+			ItemDrop = ItemType<Items.Placeable.CrystalWoodTorch>();
 			TileID.Sets.DisableSmartCursor[Type] = true;
-			adjTiles = new int[] { TileID.Torches };
+			AdjTiles = new int[] { TileID.Torches };
 			TileID.Sets.Torch[Type] = true;
 		}
 

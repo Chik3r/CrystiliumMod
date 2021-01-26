@@ -16,7 +16,7 @@ namespace CrystiliumMod
 		public CrystiliumMod()
 		{
 			// We need this for the worldgen chest fix.
-			if (ModLoader.version < new Version(0, 11, 5))
+			if (BuildInfo.tMLVersion < new Version(0, 11, 5))
 			{
 				throw new Exception("\nThis mod uses functionality only present in the latest tModLoader. Please update tModLoader to use this mod\n\n");
 			}
