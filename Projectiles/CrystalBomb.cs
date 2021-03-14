@@ -16,7 +16,7 @@ namespace CrystiliumMod.Projectiles
 			Projectile.width = 24;
 			Projectile.height = 26;
 			Projectile.friendly = true;
-			aiType = ProjectileID.Grenade;
+			AIType = ProjectileID.Grenade;
 			Projectile.alpha = 80;
 			Projectile.light = 0.5f;
 		}

@@ -13,7 +13,7 @@ namespace CrystiliumMod.Buffs
 			Description.SetDefault("Creates dangerous crystals");
 			Main.debuff[Type] = false;
 			Main.pvpBuff[Type] = true;
-			longerExpertDebuff = false;
+			LongerExpertDebuff = false;
 		}
 
 		private float ticks = 0f;

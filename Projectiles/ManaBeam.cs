@@ -26,7 +26,7 @@ namespace CrystiliumMod.Projectiles
 			Projectile.alpha = 255;
 			Projectile.light = 0.5f;
 			Projectile.extraUpdates = 1;
-			aiType = ProjectileID.Bullet;
+			AIType = ProjectileID.Bullet;
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

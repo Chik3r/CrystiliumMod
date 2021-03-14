@@ -27,8 +27,8 @@ namespace CrystiliumMod.NPCs
 			NPC.value = 200f;
 			NPC.knockBackResist = 0.5f;
 			NPC.aiStyle = 1;
-			aiType = 1;
-			animationType = NPCID.BlueSlime;
+			AIType = 1;
+			AnimationType = NPCID.BlueSlime;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

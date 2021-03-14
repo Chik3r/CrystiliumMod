@@ -12,7 +12,7 @@ namespace CrystiliumMod.Buffs
 			Description.SetDefault("+7% damage at night");
 			Main.debuff[Type] = false;
 			Main.pvpBuff[Type] = true;
-			longerExpertDebuff = false;
+			LongerExpertDebuff = false;
 		}
 
 		public override void Update(Player player, ref int buffIndex)

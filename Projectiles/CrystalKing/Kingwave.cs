@@ -16,7 +16,7 @@ namespace CrystiliumMod.Projectiles.CrystalKing
 			Projectile.friendly = false;
 			Projectile.light = 2;
 			Projectile.aiStyle = 1;
-			aiType = ProjectileID.Bullet;
+			AIType = ProjectileID.Bullet;
 		}
 	}
 }

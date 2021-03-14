@@ -7,10 +7,10 @@ namespace CrystiliumMod.Utilities
     {
         public static bool IsTopSlope(this Tile tile)
         {
-            SlopeID slope = tile.Slope;
+	        SlopeType slope = tile.Slope;
 
-            if (slope != SlopeID.HalfBrick)
-                return slope == SlopeID.SlopeDownRight;
+            if (!tile.IsHalfBlock)
+                return slope == SlopeType.SlopeDownRight;
 
             return true;
         }

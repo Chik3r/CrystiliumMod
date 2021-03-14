@@ -30,7 +30,7 @@ namespace CrystiliumMod.NPCs
 			NPC.DeathSound = SoundID.NPCDeath6;
 			NPC.value = 300f;
 			NPC.knockBackResist = 0.5f;
-			animationType = NPCID.SkeletonArcher;
+			AnimationType = NPCID.SkeletonArcher;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
@@ -330,14 +330,14 @@ namespace CrystiliumMod.NPCs
 				{
 					Main.tile[tileX - direction, tileY - 3] = new Tile();
 				}
-				if ((float)(tileX * 16) < position2.X + (float)NPC.width && (float)(tileX * 16 + 16) > position2.X && ((Main.tile[tileX, tileY].IsActive && !Main.tile[tileX, tileY].IsTopSlope() && !Main.tile[tileX, tileY - 1].IsTopSlope() && Main.tileSolid[(int)Main.tile[tileX, tileY].type] && !Main.tileSolidTop[(int)Main.tile[tileX, tileY].type]) || (Main.tile[tileX, tileY - 1].IsHalfBrick && Main.tile[tileX, tileY - 1].IsActive)) && (!Main.tile[tileX, tileY - 1].IsActive || !Main.tileSolid[(int)Main.tile[tileX, tileY - 1].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 1].type] || (Main.tile[tileX, tileY - 1].IsHalfBrick && (!Main.tile[tileX, tileY - 4].IsActive || !Main.tileSolid[(int)Main.tile[tileX, tileY - 4].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 4].type]))) && (!Main.tile[tileX, tileY - 2].IsActive || !Main.tileSolid[(int)Main.tile[tileX, tileY - 2].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 2].type]) && (!Main.tile[tileX, tileY - 3].IsActive || !Main.tileSolid[(int)Main.tile[tileX, tileY - 3].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 3].type]) && (!Main.tile[tileX - direction, tileY - 3].IsActive || !Main.tileSolid[(int)Main.tile[tileX - direction, tileY - 3].type]))
+				if ((float)(tileX * 16) < position2.X + (float)NPC.width && (float)(tileX * 16 + 16) > position2.X && ((Main.tile[tileX, tileY].IsActive && !Main.tile[tileX, tileY].IsTopSlope() && !Main.tile[tileX, tileY - 1].IsTopSlope() && Main.tileSolid[(int)Main.tile[tileX, tileY].type] && !Main.tileSolidTop[(int)Main.tile[tileX, tileY].type]) || (Main.tile[tileX, tileY - 1].IsHalfBlock && Main.tile[tileX, tileY - 1].IsActive)) && (!Main.tile[tileX, tileY - 1].IsActive || !Main.tileSolid[(int)Main.tile[tileX, tileY - 1].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 1].type] || (Main.tile[tileX, tileY - 1].IsHalfBlock && (!Main.tile[tileX, tileY - 4].IsActive || !Main.tileSolid[(int)Main.tile[tileX, tileY - 4].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 4].type]))) && (!Main.tile[tileX, tileY - 2].IsActive || !Main.tileSolid[(int)Main.tile[tileX, tileY - 2].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 2].type]) && (!Main.tile[tileX, tileY - 3].IsActive || !Main.tileSolid[(int)Main.tile[tileX, tileY - 3].type] || Main.tileSolidTop[(int)Main.tile[tileX, tileY - 3].type]) && (!Main.tile[tileX - direction, tileY - 3].IsActive || !Main.tileSolid[(int)Main.tile[tileX - direction, tileY - 3].type]))
 				{
 					float num208 = (float)(tileY * 16);
-					if (Main.tile[tileX, tileY].IsHalfBrick)
+					if (Main.tile[tileX, tileY].IsHalfBlock)
 					{
 						num208 += 8f;
 					}
-					if (Main.tile[tileX, tileY - 1].IsHalfBrick)
+					if (Main.tile[tileX, tileY - 1].IsHalfBlock)
 					{
 						num208 -= 8f;
 					}

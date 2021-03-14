@@ -12,7 +12,7 @@ namespace CrystiliumMod.Buffs
 			Description.SetDefault("+20% critical strike damage");
 			Main.debuff[Type] = false;
 			Main.pvpBuff[Type] = true;
-			longerExpertDebuff = false;
+			LongerExpertDebuff = false;
 		}
 
 		public override void Update(Player player, ref int buffIndex)

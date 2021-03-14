@@ -40,7 +40,7 @@ namespace CrystiliumMod.NPCs.Bosses
 			NPC.HitSound = SoundID.NPCHit5;
 			NPC.DeathSound = SoundID.NPCDeath6;
 			NPC.value = 60000f;
-			bossBag = ItemType<Items.CrystalBag>();
+			BossBag = ItemType<Items.CrystalBag>();
 			NPC.knockBackResist = 0f;
 			// TODO: GetSoundSlot stuff
 			//music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/CrystalKing");

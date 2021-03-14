@@ -28,7 +28,7 @@ namespace CrystiliumMod.Projectiles
 			Projectile.DamageType = DamageClass.Melee;
 			Projectile.penetrate = -1;
 			Projectile.aiStyle = 75;
-			aiType = 595;
+			AIType = 595;
 		}
 
 		public override void AI()

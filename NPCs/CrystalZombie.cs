@@ -28,8 +28,8 @@ namespace CrystiliumMod.NPCs
 			NPC.value = 300f;
 			NPC.knockBackResist = 0.75f;
 			NPC.aiStyle = 3;
-			aiType = NPCID.Skeleton;
-			animationType = NPCID.Zombie;
+			AIType = NPCID.Skeleton;
+			AnimationType = NPCID.Zombie;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

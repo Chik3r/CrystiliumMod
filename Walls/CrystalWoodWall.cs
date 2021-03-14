@@ -10,7 +10,7 @@ namespace CrystiliumMod.Walls
 		public override void SetDefaults()
 		{
 			Main.wallHouse[Type] = true;
-			dustType = DustType<Dusts.Sparkle>();
+			DustType = DustType<Dusts.Sparkle>();
 			AddMapEntry(new Color(150, 150, 150));
 		}
 	}

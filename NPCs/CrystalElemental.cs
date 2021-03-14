@@ -29,8 +29,8 @@ namespace CrystiliumMod.NPCs
 			NPC.value = 300f;
 			NPC.knockBackResist = 0.5f;
 			NPC.aiStyle = 22;
-			aiType = NPCID.Wraith;
-			animationType = NPCID.Wraith;
+			AIType = NPCID.Wraith;
+			AnimationType = NPCID.Wraith;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)

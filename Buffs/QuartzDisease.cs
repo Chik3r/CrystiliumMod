@@ -14,7 +14,7 @@ namespace CrystiliumMod.Buffs
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoSave[Type] = true;
-			longerExpertDebuff = true;
+			LongerExpertDebuff = true;
 		}
 
 		private float ticks = 0f;

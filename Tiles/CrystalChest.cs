@@ -84,7 +84,7 @@ namespace CrystiliumMod.Tiles
 
 		public override bool IsLockedChest(int i, int j) => Main.tile[i, j].frameX / 36 == 2;
 
-		public override bool UnlockChest(int i, int j, ref short frameXAdjustment, ref int dustType, ref bool manual) {
+		public override bool UnlockChest(int i, int j, ref short frameXAdjustment, ref int DustType, ref bool manual) {
 			frameXAdjustment = -72;
 			return true;
 		}

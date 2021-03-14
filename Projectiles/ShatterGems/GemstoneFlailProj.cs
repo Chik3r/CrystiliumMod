@@ -17,7 +17,7 @@ namespace CrystiliumMod.Projectiles.ShatterGems
 			Projectile.CloneDefaults(ProjectileID.Grenade);
 			Projectile.penetrate = 1;
 			Projectile.alpha = 80;
-			aiType = ProjectileID.Grenade;
+			AIType = ProjectileID.Grenade;
 			Projectile.light = 0.5f;
 		}
 

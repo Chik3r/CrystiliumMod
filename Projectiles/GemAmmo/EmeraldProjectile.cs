@@ -26,7 +26,7 @@ namespace CrystiliumMod.Projectiles.GemAmmo
 			Projectile.alpha = 255;
 			Projectile.light = 0.5f;
 			Projectile.extraUpdates = 1;
-			aiType = ProjectileID.Bullet;
+			AIType = ProjectileID.Bullet;
 		}
 	}
 }

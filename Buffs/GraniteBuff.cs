@@ -12,7 +12,7 @@ namespace CrystiliumMod.Buffs
 			Description.SetDefault("Hard as a rock");
 			Main.debuff[Type] = false;
 			Main.pvpBuff[Type] = true;
-			longerExpertDebuff = false;
+			LongerExpertDebuff = false;
 		}
 
 		public override void Update(Player player, ref int buffIndex)

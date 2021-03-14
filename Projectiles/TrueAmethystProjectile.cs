@@ -19,7 +19,7 @@ namespace CrystiliumMod.Projectiles
 			Projectile.height = 26;
 			Projectile.timeLeft = 30;
 			Projectile.friendly = true;
-			aiType = 7;
+			AIType = 7;
 			Projectile.alpha = 80;
 			Projectile.light = 0.5f;
 		}

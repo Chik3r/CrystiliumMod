@@ -29,8 +29,8 @@ namespace CrystiliumMod.NPCs
 			NPC.value = 550f;
 			NPC.knockBackResist = 0.75f;
 			NPC.aiStyle = NPCID.GoblinPeon;
-			aiType = NPCID.GoblinPeon;
-			animationType = NPCID.SolarDrakomire;
+			AIType = NPCID.GoblinPeon;
+			AnimationType = NPCID.SolarDrakomire;
 		}
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
